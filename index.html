@@ -2,522 +2,365 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ItsMyApp Portfolio Brochure</title>
-    
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
+    <!-- Apple Mobile Web App PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ItsMyApp Brochure">
+    <meta name="theme-color" content="#1a1e24">
+
+    <title>ItsMyApp Portfolio Brochure</title>
+
     <style>
-        /* --- BRAND THEME & RESET (Legacy Browser Compliant) --- */
-        * {
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #0d1117;
-            color: #c9d1d9;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            overflow: hidden;
-            height: 100vh;
-        }
+        /* Base Reset & Variables */
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #1a1e24; color: #e2e8f0; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
-        /* --- HEADER & LAYOUT CONTAINER --- */
-        .app-wrapper {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            -webkit-flex-direction: column;
-            flex-direction: column;
-            height: 100vh;
-            padding: 20px;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-            -webkit-flex-shrink: 0;
-            flex-shrink: 0;
-        }
-        header h1 {
-            color: #ffffff;
-            margin: 0 0 5px 0;
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-        header h1 span {
-            color: #2f81f7;
-        }
-        header p {
-            margin: 0;
-            color: #8b949e;
-            font-size: 14px;
-        }
+        /* Home View Dashboard */
+        .dashboard { display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; flex-direction: column; min-height: 100vh; padding: 40px; }
+        .header { text-align: center; margin-bottom: 50px; }
+        .header h1 { font-size: 32px; font-weight: 700; letter-spacing: 1px; color: #ffffff; background: -webkit-linear-gradient(45deg, #00e5ff, #00ff88); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        /* --- PORTFOLIO GRID GRID --- */
-        .grid-container {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-flex-wrap: wrap;
-            flex-wrap: wrap;
-            -webkit-box-pack: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            overflow-y: auto;
-            padding-bottom: 25px;
-        }
-        .app-card {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 12px;
-            width: 320px;
-            margin: 15px;
-            padding: 25px;
-            cursor: pointer;
-            transition: border-color 0.2s, background-color 0.2s;
-            -webkit-transition: border-color 0.2s, background-color 0.2s;
-        }
-        .app-card:active {
-            background: #21262d;
-            border-color: #58a6ff;
-        }
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            background: #21262d;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            font-size: 24px;
-            border: 1px solid #30363d;
-        }
-        .app-card h2 {
-            color: #ffffff;
-            margin: 0 0 8px 0;
-            font-size: 20px;
-        }
-        .app-card p {
-            color: #8b949e;
-            margin: 0;
-            font-size: 14px;
-            line-height: 1.5;
-        }
+        .card-grid { display: -webkit-box; display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-pack: center; -webkit-justify-content: center; justify-content: center; gap: 30px; width: 100%; max-width: 1200px; margin: 0 auto; }
 
-        /* --- IMMERSIVE OVERLAY MODAL --- */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: #0d1117;
-            display: none;
-            z-index: 1000;
-        }
-        .modal-inner {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: flex;
-            height: 100%;
-            width: 100%;
-        }
+        /* Interactive Cards */
+        .card { background-color: #242932; border-radius: 16px; padding: 30px; width: calc(33.333% - 20px); max-width: 400px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.05); -webkit-transition: -webkit-transform 0.3s ease; transition: transform 0.3s ease; display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; flex-direction: column; -webkit-box-align: center; -webkit-align-items: center; align-items: center; text-align: center; }
+        @media screen and (max-width: 1024px) { .card { width: calc(50% - 15px); } }
+        @media screen and (max-width: 768px) { .card { width: 100%; } }
+        .card:hover, .card:active { -webkit-transform: scale(1.02) translateY(-5px); transform: scale(1.02) translateY(-5px); border-color: #00e5ff; box-shadow: 0 10px 30px rgba(0, 229, 255, 0.1); }
+        .card-icon { font-size: 48px; margin-bottom: 20px; }
+        .card-title { font-size: 22px; color: #ffffff; margin-bottom: 10px; }
+        .card-desc { font-size: 15px; color: #a0aec0; }
 
-        /* LEFT PANEL: DETAILS SCRIPTS */
-        .details-panel {
-            width: 45%;
-            padding: 40px;
-            overflow-y: auto;
-            border-right: 1px solid #30363d;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            -webkit-flex-direction: column;
-            flex-direction: column;
-        }
-        .close-btn {
-            align-self: flex-start;
-            background: #21262d;
-            border: 1px solid #30363d;
-            color: #c9d1d9;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            margin-bottom: 30px;
-        }
-        .close-btn:active {
-            background: #30363d;
-        }
-        .details-panel h2 {
-            color: #ffffff;
-            font-size: 32px;
-            margin: 0 0 10px 0;
-        }
-        .tagline {
-            color: #58a6ff;
-            font-size: 16px;
-            margin: 0 0 25px 0;
-            font-weight: 500;
-        }
-        .section-block {
-            margin-bottom: 25px;
-        }
-        .section-block h3 {
-            color: #f0f6fc;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 0 0 8px 0;
-            border-bottom: 1px solid #21262d;
-            padding-bottom: 5px;
-        }
-        .section-block p, .section-block ul {
-            font-size: 15px;
-            line-height: 1.6;
-            color: #8b949e;
-            margin: 0;
-            padding-left: 0;
-        }
-        .section-block ul {
-            padding-left: 20px;
-        }
-        .compliance-badge {
-            background: #232213;
-            border: 1px solid #f2cc60;
-            color: #f2cc60;
-            padding: 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            margin-top: 15px;
-            font-weight: 600;
-            text-align: center;
-        }
-        .action-container {
-            margin-top: auto;
-            padding-top: 20px;
-        }
-        .launch-btn {
-            display: block;
-            width: 100%;
-            background: #238636;
-            color: #ffffff;
-            text-align: center;
-            padding: 14px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            border: 1px solid rgba(240,246,252,0.1);
-        }
-        .launch-btn:active {
-            background: #2ea043;
-        }
+        /* Deep-Dive Overlay Modal */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(15, 18, 22, 0.95); z-index: 1000; display: none; opacity: 0; -webkit-transition: opacity 0.4s ease; transition: opacity 0.4s ease; -webkit-box-align: center; -webkit-align-items: center; align-items: center; -webkit-box-pack: center; -webkit-justify-content: center; justify-content: center; }
+        .modal-overlay.active { display: -webkit-box; display: -webkit-flex; display: flex; opacity: 1; }
+        .modal-content { background-color: #1a1e24; width: 90%; max-width: 1000px; height: 85vh; border-radius: 20px; overflow: hidden; display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; flex-direction: column; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.5); border: 1px solid #2d3748; -webkit-transform: translateY(20px); transform: translateY(20px); -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .modal-overlay.active .modal-content { -webkit-transform: translateY(0); transform: translateY(0); }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 30px; color: #a0aec0; background: none; border: none; cursor: pointer; z-index: 10; line-height: 1; }
+        .modal-body { display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-flex: 1; -webkit-flex: 1; flex: 1; overflow: hidden; }
 
-        /* RIGHT PANEL: HARDWARE ACCELERATED KEN BURNS VISUALS */
-        .visual-panel {
-            width: 55%;
-            height: 100%;
-            background: #010409;
-            position: relative;
-            overflow: hidden;
-        }
-        .kb-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            -webkit-transition: opacity 1s ease-in-out;
-            overflow: hidden;
-        }
-        .kb-slide.active {
-            opacity: 1;
-        }
-        
-        /* The structural element utilizing direct GPU rendering scales */
-        .kb-img {
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center center;
-            transform-origin: center center;
-            -webkit-transform-origin: center center;
-        }
-        
-        /* Alternating hardware-accelerated loops based on slide index */
-        .active .kb-img-0 {
-            animation: kb-pan-a 16s ease-in-out infinite alternate;
-            -webkit-animation: kb-pan-a 16s ease-in-out infinite alternate;
-        }
-        .active .kb-img-1 {
-            animation: kb-pan-b 16s ease-in-out infinite alternate;
-            -webkit-animation: kb-pan-b 16s ease-in-out infinite alternate;
-        }
+        /* Modal Left Pane */
+        .modal-left { width: 50%; padding: 40px; display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; flex-direction: column; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+        .modal-left h2 { font-size: 28px; color: #ffffff; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #2d3748; }
+        .modal-left h3 { font-size: 16px; text-transform: uppercase; letter-spacing: 1px; color: #00e5ff; margin: 20px 0 10px 0; }
+        .modal-left p, .modal-left ul { font-size: 15px; color: #cbd5e0; margin-bottom: 15px; }
+        .modal-left ul { padding-left: 20px; }
+        .modal-left li { margin-bottom: 8px; }
+        .compliance-label { margin-top: auto; padding-top: 30px; font-size: 12px; font-weight: bold; color: #00ff88; letter-spacing: 1px; }
 
-        /* GPU-targeted WebKit Safe Keyframes */
-        @keyframes kb-pan-a {
-            0% { transform: scale(1.0) translate(0px, 0px); }
-            100% { transform: scale(1.15) translate(-15px, -10px); }
+        /* Modal Right Pane */
+        .modal-right { width: 50%; position: relative; background-color: #0f1216; overflow: hidden; border-left: 1px solid #2d3748; }
+        .slider-container { width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; background-size: cover; background-position: center; background-repeat: no-repeat; -webkit-transform: scale(1) translate(0, 0); transform: scale(1) translate(0, 0); }
+
+        @-webkit-keyframes kenburns {
+            0% { opacity: 0; -webkit-transform: scale(1) translate(0px, 0px); }
+            5% { opacity: 1; }
+            33.33% { opacity: 1; }
+            38.33% { opacity: 0; -webkit-transform: scale(1.15) translate(-2%, -2%); }
+            100% { opacity: 0; -webkit-transform: scale(1) translate(0px, 0px); }
         }
-        @-webkit-keyframes kb-pan-a {
-            0% { -webkit-transform: scale(1.0) translate(0px, 0px); }
-            100% { -webkit-transform: scale(1.15) translate(-15px, -10px); }
+        @keyframes kenburns {
+            0% { opacity: 0; transform: scale(1) translate(0px, 0px); }
+            5% { opacity: 1; }
+            33.33% { opacity: 1; }
+            38.33% { opacity: 0; transform: scale(1.15) translate(-2%, -2%); }
+            100% { opacity: 0; transform: scale(1) translate(0px, 0px); }
         }
-        @keyframes kb-pan-b {
-            0% { transform: scale(1.15) translate(0px, 0px); }
-            100% { transform: scale(1.0) translate(15px, 10px); }
-        }
-        @-webkit-keyframes kb-pan-b {
-            0% { -webkit-transform: scale(1.15) translate(0px, 0px); }
-            100% { -webkit-transform: scale(1.0) translate(15px, 10px); }
-        }
+        .slide.active-animation { -webkit-animation: kenburns 15s infinite linear; animation: kenburns 15s infinite linear; }
+        .slide:nth-child(1) { -webkit-animation-delay: 0s; animation-delay: 0s; }
+        .slide:nth-child(2) { -webkit-animation-delay: 5s; animation-delay: 5s; }
+        .slide:nth-child(3) { -webkit-animation-delay: 10s; animation-delay: 10s; }
+        .slide-bg-1 { background: -webkit-linear-gradient(135deg, #2b5876, #4e4376); }
+        .slide-bg-2 { background: -webkit-linear-gradient(135deg, #141e30, #243b55); }
+        .slide-bg-3 { background: -webkit-linear-gradient(135deg, #0f2027, #203a43, #2c5364); }
+
+        /* Modal Footer CTA */
+        .modal-footer { padding: 20px 40px; background-color: #242932; border-top: 1px solid #2d3748; display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-pack: center; -webkit-justify-content: center; justify-content: center; }
+        .cta-button { display: inline-block; background-color: #00e5ff; color: #1a1e24; font-size: 18px; font-weight: bold; text-decoration: none; padding: 15px 40px; border-radius: 30px; -webkit-transition: background-color 0.3s ease, -webkit-transform 0.2s ease; transition: background-color 0.3s ease, transform 0.2s ease; box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3); width: 100%; text-align: center; max-width: 400px; }
+        .cta-button:active { -webkit-transform: scale(0.95); transform: scale(0.95); background-color: #00b3cc; }
     </style>
 </head>
 <body>
 
-    <div class="app-wrapper">
-        <header>
-            <h1>itsmyapp<span>.co.uk</span></h1>
-            <p>Application Portfolio Showcase Terminal</p>
+    <div class="dashboard">
+        <header class="header">
+            <h1>ItsMyApp Fleet</h1>
         </header>
 
-        <div class="grid-container" id="appGrid">
-            </div>
+        <div class="card-grid" id="appCardsContainer">
+            <!-- Cards will be dynamically injected here by ES5 JS -->
+        </div>
     </div>
 
-    <div class="modal" id="detailsModal">
-        <div class="modal-inner">
-            
-            <div class="details-panel">
-                <button class="close-btn" onclick="closeModal()">← Back to Fleet</button>
-                <h2 id="modalTitle">App Title</h2>
-                <div class="tagline" id="modalTagline">Tagline text goes here</div>
-                
-                <div class="section-block">
+    <!-- The Deep-Dive Modal -->
+    <div id="appModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <div class="modal-body">
+                <div class="modal-left">
+                    <h2 id="modalTitle">App Title</h2>
+                    
                     <h3>The Concept</h3>
-                    <p id="modalConcept">Concept body text.</p>
-                </div>
-
-                <div class="section-block">
+                    <p id="modalConcept">Concept details will load here.</p>
+                    
                     <h3>Key Features</h3>
                     <ul id="modalFeatures">
-                        </ul>
-                </div>
-
-                <div class="section-block">
+                        <!-- Populated by JavaScript -->
+                    </ul>
+                    
                     <h3>Target Market</h3>
-                    <p id="modalMarket">Market demographic details.</p>
+                    <p id="modalMarket">Market details will load here.</p>
+                    
+                    <div class="compliance-label">PROTECTED BY COMPLIANCE MD FOR FUTURE APPS</div>
                 </div>
-
-                <div class="compliance-badge">
-                    PROTECTED BY COMPLIANCE MD FOR FUTURE APPS
-                </div>
-
-                <div class="action-container">
-                    <a href="#" id="modalLaunch" class="launch-btn" target="_blank">Launch Live App</a>
+                
+                <div class="modal-right">
+                    <div class="slider-container" id="sliderContainer">
+                        <div class="slide slide-bg-1"></div>
+                        <div class="slide slide-bg-2"></div>
+                        <div class="slide slide-bg-3"></div>
+                    </div>
                 </div>
             </div>
-
-            <div class="visual-panel" id="modalVisuals">
-                </div>
-
+            <div class="modal-footer">
+                <a id="modalCta" href="#" target="_blank" class="cta-button">Launch Live App</a>
+            </div>
         </div>
     </div>
 
     <script>
-        /* --- APPLICATION DATA SOURCE MATRIX (ES5 OBJECT ARRAYS) --- */
-        var portfolioData = [
+        /* Strict ES5 JavaScript */
+        var appDatabase = [
             {
-                id: "packittrackit",
-                name: "PackitTrackit",
-                tagline: "Intelligent Inventory & Moving Ecosystem",
-                icon: "📦",
-                concept: "A comprehensive storage and moving optimizer using QR code itemization and local device assets to effortlessly trace high-value items, private collections, and moving configurations.",
-                features: [
-                    "Dynamic QR Code generation and scanning.",
-                    "Segmented Move and Collect structural environments.",
-                    "Offline-capable data arrays maximizing hardware sandboxing."
-                ],
-                market: "Residential relocations, asset tracking, collectors, and educational supply management profiles.",
-                url: "https://www.itsmyapp.co.uk", 
-                images: [
-                    "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200",
-                    "https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=1200"
-                ]
+                id: 'syncbanana',
+                title: 'Sync Banana',
+                icon: '🍌',
+                desc: 'The Zero-Cloud Photo Organizer. Automatically sort site visit photos by GPS.',
+                concept: 'Automatically sort your site visit photos by GPS location, convert HEIC files, and shield against duplicates without touching a cloud server.',
+                features: ['100% device-local processing', 'GPS automated folder sorting', 'HEIC to JPG fast conversion', 'Duplicate photo shielding'],
+                market: 'Construction site managers, surveyors, and field workers.',
+                url: 'https://firebasestorage.googleapis.com/v0/b/its-my-app-platform.firebasestorage.app/o/downloads%2Fsync_banana.exe?alt=media'
             },
             {
-                id: "wholehospitality",
-                name: "Whole Hospitality",
-                tagline: "Commercial Kitchen Architecture & Stock Management",
-                icon: "🍽️",
-                concept: "An integrated operations platform providing rigorous Gross Profit algorithms, live stock compliance mapping, and streamlined hospitality workflows built to maximize margin protection.",
-                features: [
-                    "Precision GP configuration engines.",
-                    "Instant auditing interfaces designed for rapid mobile interaction.",
-                    "Server-isolated business data protection pipelines."
-                ],
-                market: "Boutique hotels, pubs, high-volume bars, restaurants, and freelance commercial kitchen consultants.",
-                url: "https://www.itsmyapp.co.uk",
-                images: [
-                    "https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1200",
-                    "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200"
-                ]
+                id: 'itsmymerge',
+                title: 'Its My Merge',
+                icon: '📄',
+                desc: 'A simple, powerful PDF merger for everyone. Fully private.',
+                concept: 'Merge, customize, and organize your PDF files with ease directly in your browser. Add headers, footers, and page numbers securely.',
+                features: ['Client-side PDF merging', 'Header and footer customization', 'Automated page numbering', 'Zero server data transfer'],
+                market: 'Students, accountants, and administrative professionals.',
+                url: 'https://its-my-merge.web.app/'
             },
             {
-                id: "itscutlist",
-                name: "Its My Cutlist",
-                tagline: "Zero-Server Linear & Sheet Material Optimizer",
-                icon: "🪚",
-                concept: "A high-precision geometric panel nesting tool that instantly calculates material optimization metrics for handymen and joiners directly in the browser sandboxed memory layer.",
-                features: [
-                    "Instant parametric layout computation schemas.",
-                    "Zero structural external database latency.",
-                    "Direct cutlist layout export configurations."
-                ],
-                market: "Carpenters, bespoke kitchen system layout professionals, painters, decorators, and hobbyists.",
-                url: "https://www.itsmyapp.co.uk",
-                images: [
-                    "https://images.unsplash.com/photo-1534224039826-c7a0dea0e66a?q=80&w=1200",
-                    "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200"
-                ]
+                id: 'itsmyidea',
+                title: 'Its My Idea',
+                icon: '💡',
+                desc: 'Securely store your ideas with PIN encryption directly in your browser.',
+                concept: 'A secure, offline-first vault for your brilliant ideas. Everything is PIN encrypted and strictly stays on your local device.',
+                features: ['Military-grade PIN encryption', 'Full offline support', 'Zero cloud syncing', 'Lightning fast interface'],
+                market: 'Entrepreneurs, writers, and inventors.',
+                url: 'https://its-my-idea-1950e.web.app/'
             },
             {
-                id: "itsscreen",
-                name: "Its My Screen",
-                tagline: "Lean Local Digital Menu Board signage",
-                icon: "📺",
-                concept: "A highly optimized, display rendering solution constructed to run on low-power displays, converting baseline hardware into premium, modern advertising canvases.",
-                features: [
-                    "Microscopic footprint capable of processing on low-grade chips.",
-                    "Ultra-low network consumption metrics using memory arrays.",
-                    "Fluid presentation animations built strictly with styling transforms."
-                ],
-                market: "Independent local bakeries, high-street coffee houses, garages, and neighborhood storefront windows.",
-                url: "https://www.itsmyapp.co.uk",
-                images: [
-                    "https://images.unsplash.com/photo-1542744094-3a31f103e35f?q=80&w=1200",
-                    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200"
-                ]
+                id: 'workpics',
+                title: 'Work Pics',
+                icon: '📸',
+                desc: 'Keep your work and personal photos separate on Android.',
+                concept: 'An Android app that captures images directly into a dedicated, isolated folder so site visits never clutter your personal family gallery.',
+                features: ['Isolated gallery storage', 'Direct camera integration', 'Batch export capabilities', 'No cloud mixing'],
+                market: 'Contractors, real estate agents, and field engineers.',
+                url: 'https://firebasestorage.googleapis.com/v0/b/its-my-app-platform.firebasestorage.app/o/downloads%2FWork_Photo.apk?alt=media'
+            },
+            {
+                id: 'itsmyqr',
+                title: 'Its My QR Code',
+                icon: '🔳',
+                desc: 'The Zero-Backend QR Generator. Create stunning, branded QR codes.',
+                concept: 'Create stunning, branded QR codes in seconds. Completely private, browser-based, and fully compliant with 2027 legal standards.',
+                features: ['Custom branding and colors', 'Zero backend tracking', 'Instant high-res SVG/PNG export', 'Compliant privacy design'],
+                market: 'Marketers, event organizers, and local businesses.',
+                url: 'https://its-my-qr.vercel.app/'
+            },
+            {
+                id: 'timetrack',
+                title: 'Time Track Invoice',
+                icon: '⏱️',
+                desc: 'Effortless Time Tracking, Professional Invoicing.',
+                concept: 'Designed for freelancers and contract workers, this app transforms how you log billable hours and immediately convert them into beautiful invoices.',
+                features: ['One-tap time tracking', 'Automated PDF invoice generation', 'Client management database', 'Tax-ready exporting'],
+                market: 'Freelancers, consultants, and independent contractors.',
+                url: 'https://www.itsmyapp.co.uk/apps/time-track-invoice'
+            },
+            {
+                id: 'bargp',
+                title: 'Bar GP',
+                icon: '🍺',
+                desc: 'The definitive tool for calculating Gross Profit percentages.',
+                concept: 'Optimize your bar\'s profitability instantly. Manage your margins, calculate pour costs, and protect your bottom line from shrinkage.',
+                features: ['Live margin calculations', 'Menu pricing optimizer', 'Pour cost tracking', 'Historical GP analysis'],
+                market: 'Pub landlords, bar managers, and hospitality groups.',
+                url: 'https://www.itsmyapp.co.uk/apps/bar-gp'
+            },
+            {
+                id: 'itsmykeys',
+                title: 'Its My Keys',
+                icon: '🔑',
+                desc: 'The Digital Replacement for Your Physical Key Log.',
+                concept: 'A comprehensive digital ledger to track keys, access cards, and high-value equipment checked out to staff or contractors in real-time.',
+                features: ['Digital sign-out signatures', 'Overdue key alerts', 'Full audit trail history', 'Barcode scanning support'],
+                market: 'Facility managers, security desks, and car dealerships.',
+                url: 'https://www.itsmyapp.co.uk/apps/its-my-keys'
+            },
+            {
+                id: 'itsmykeybox',
+                title: 'Its My Keybox',
+                icon: '🔒',
+                desc: 'Manage and share access codes for properties.',
+                concept: 'The simple, secure solution for property managers and Airbnb hosts to centrally manage and securely share combination codes for lockboxes.',
+                features: ['Central code vault', 'Secure guest sharing links', 'Code rotation reminders', 'Multi-property dashboard'],
+                market: 'Airbnb hosts and short-term rental managers.',
+                url: 'https://www.itsmyapp.co.uk/apps/its-my-keybox'
+            },
+            {
+                id: 'itsmysubs',
+                title: 'Its My Subs',
+                icon: '💳',
+                desc: 'Track your recurring payments and take back control.',
+                concept: 'Stop subscription creep. Track every recurring payment, from Netflix to car tax, and get alerts before you are charged again.',
+                features: ['Renewal date alerts', 'Monthly cost aggregation', 'Categorized spending', 'Contract end-date tracking'],
+                market: 'Consumers looking to optimize their personal finances.',
+                url: 'https://www.itsmyapp.co.uk/apps/its-my-subs'
+            },
+            {
+                id: 'packittrackit',
+                title: 'Packit Trackit',
+                icon: '📦',
+                desc: 'Digital X-Ray Vision for your boxes. AI-powered cataloging.',
+                concept: 'Snap a photo, let AI catalog the contents, and instantly search your entire physical inventory from your phone. Never lose an item in a box again.',
+                features: ['AI content recognition', 'Instant global search', 'QR code box tagging', 'Multi-device sync'],
+                market: 'Moving companies, storage units, and logistics.',
+                url: 'https://www.itsmyapp.co.uk/apps/packit-trackit'
+            },
+            {
+                id: 'wholehospitality',
+                title: 'Whole Hospitality',
+                icon: '🏨',
+                desc: 'The only hospitality platform that starts with an on-site audit.',
+                concept: 'We find the leaks in your Gross Profit, stock, and operations, then give you the customized digital tools to plug them for good.',
+                features: ['Comprehensive operational audits', 'Custom KPI dashboards', 'Staff training modules', 'Leak detection reporting'],
+                market: 'Hotels, resorts, and large-scale hospitality venues.',
+                url: 'https://wholehospitality.co.uk/'
+            },
+            {
+                id: 'itsmycutlist',
+                title: 'Its My Cutlist',
+                icon: '🪚',
+                desc: 'A cloud-connected parametric design and 2D optimization tool.',
+                concept: 'An algorithmic cut-sheet generator designed specifically for carpenters to calculate the most efficient way to break down sheet goods, minimizing waste.',
+                features: ['Advanced nesting algorithm', 'Kerf thickness calculations', 'Exportable PDF shop diagrams', 'Cost estimation tracking'],
+                market: 'Carpenters, cabinet makers, and custom fabrication shops.',
+                url: 'https://www.itsmyapp.co.uk/apps/its-my-cutlist'
+            },
+            {
+                id: 'coastai',
+                title: 'CoastAI',
+                icon: '🤖',
+                desc: 'Custom AI agents to handle your daily operations.',
+                concept: 'CoastAI provides custom AI agents to handle your customer support, appointment scheduling, and internal workflow automation.',
+                features: ['24/7 AI receptionists', 'Automated scheduling', 'Custom knowledge base integration', 'Multi-channel support'],
+                market: 'Small businesses and service-based enterprises.',
+                url: 'https://coastalai.co.uk/'
             }
         ];
 
-        var loopInterval = null;
+        /* Render Cards Dynamically */
+        var cardsContainer = document.getElementById('appCardsContainer');
+        for (var i = 0; i < appDatabase.length; i++) {
+            var app = appDatabase[i];
+            
+            var card = document.createElement('div');
+            card.className = 'card';
+            card.setAttribute('data-id', i);
+            card.onclick = function() {
+                openModal(this.getAttribute('data-id'));
+            };
 
-        /* --- INITIALIZE GRID LANDING INTERFACE --- */
-        function initGrid() {
-            var grid = document.getElementById("appGrid");
-            var html = "";
-            for (var i = 0; i < portfolioData.length; i++) {
-                var app = portfolioData[i];
-                html += '<div class="app-card" onclick="openModal(\'' + app.id + '\')">';
-                html += '  <div class="card-icon">' + app.icon + '</div>';
-                html += '  <h2>' + app.name + '</h2>';
-                html += '  <p>' + app.tagline + '</p>';
-                html += '</div>';
-            }
-            grid.innerHTML = html;
+            var icon = document.createElement('div');
+            icon.className = 'card-icon';
+            icon.innerText = app.icon;
+
+            var title = document.createElement('h2');
+            title.className = 'card-title';
+            title.innerText = app.title;
+
+            var desc = document.createElement('p');
+            desc.className = 'card-desc';
+            desc.innerText = app.desc;
+
+            card.appendChild(icon);
+            card.appendChild(title);
+            card.appendChild(desc);
+            
+            cardsContainer.appendChild(card);
         }
 
-        /* --- DISPLAY DEEP DIVE MODAL --- */
-        function openModal(appId) {
-            var selectedApp = null;
-            for (var i = 0; i < portfolioData.length; i++) {
-                if (portfolioData[i].id === appId) {
-                    selectedApp = portfolioData[i];
-                    break;
-                }
-            }
-            if (!selectedApp) return;
+        function openModal(index) {
+            var data = appDatabase[index];
+            if (!data) return;
 
-            // Load Content Fields Safely (No InnerHTML issues)
-            document.getElementById("modalTitle").innerText = selectedApp.name;
-            document.getElementById("modalTagline").innerText = selectedApp.tagline;
-            document.getElementById("modalConcept").innerText = selectedApp.concept;
-            document.getElementById("modalMarket").innerText = selectedApp.market;
-            document.getElementById("modalLaunch").setAttribute("href", selectedApp.url);
+            document.getElementById('modalTitle').innerText = data.title;
+            document.getElementById('modalConcept').innerText = data.concept;
+            document.getElementById('modalMarket').innerText = data.market;
+            document.getElementById('modalCta').href = data.url;
 
-            // Populate Features Checklist Array
-            var featuresList = document.getElementById("modalFeatures");
-            featuresList.innerHTML = "";
-            for (var f = 0; f < selectedApp.features.length; f++) {
-                var li = document.createElement("li");
-                li.innerText = selectedApp.features[f];
+            var featuresList = document.getElementById('modalFeatures');
+            featuresList.innerHTML = ''; 
+            for (var j = 0; j < data.features.length; j++) {
+                var li = document.createElement('li');
+                li.innerText = data.features[j];
                 featuresList.appendChild(li);
             }
 
-            // Populate GPU Ken Burns Slides Panel
-            var visualsPanel = document.getElementById("modalVisuals");
-            visualsPanel.innerHTML = "";
-            for (var imgIdx = 0; imgIdx < selectedApp.images.length; imgIdx++) {
-                var slide = document.createElement("div");
-                slide.className = "kb-slide" + (imgIdx === 0 ? " active" : "");
-                
-                var innerImg = document.createElement("div");
-                innerImg.className = "kb-img kb-img-" + (imgIdx % 2);
-                innerImg.style.backgroundImage = "url('" + selectedApp.images[imgIdx] + "')";
-                
-                slide.appendChild(innerImg);
-                visualsPanel.appendChild(slide);
+            var slides = document.querySelectorAll('.slide');
+            for (var k = 0; k < slides.length; k++) {
+                slides[k].className = slides[k].className.replace(' active-animation', '');
+                void slides[k].offsetWidth;
+                slides[k].className += ' active-animation';
             }
 
-            // Display Modal Pane
-            document.getElementById("detailsModal").style.display = "block";
-
-            // Initialize Loop Cycle Sequence if multi-image
-            if (selectedApp.images.length > 1) {
-                startImageLoop();
-            }
+            var modal = document.getElementById('appModal');
+            modal.style.display = '-webkit-box';
+            modal.style.display = '-webkit-flex';
+            modal.style.display = 'flex';
+            
+            setTimeout(function() {
+                modal.className += ' active';
+            }, 10);
         }
 
-        /* --- CLOSE DETAILS INTERFACE --- */
         function closeModal() {
-            document.getElementById("detailsModal").style.display = "none";
-            if (loopInterval) {
-                clearInterval(loopInterval);
-                loopInterval = null;
+            var modal = document.getElementById('appModal');
+            modal.className = modal.className.replace(' active', '');
+            
+            var slides = document.querySelectorAll('.slide');
+            for (var j = 0; j < slides.length; j++) {
+                slides[j].className = slides[j].className.replace(' active-animation', '');
             }
+
+            setTimeout(function() {
+                modal.style.display = 'none';
+            }, 400);
         }
 
-        /* --- RUN ROTATING CAROUSEL SEQUENCE --- */
-        function startImageLoop() {
-            if (loopInterval) clearInterval(loopInterval);
-            loopInterval = setInterval(function() {
-                var slides = document.getElementsByClassName("kb-slide");
-                if (slides.length <= 1) return;
-                
-                var activeIdx = 0;
-                for (var i = 0; i < slides.length; i++) {
-                    if (slides[i].className.indexOf("active") !== -1) {
-                        activeIdx = i;
-                        break;
-                    }
-                }
-                
-                slides[activeIdx].className = "kb-slide";
-                var nextIdx = (activeIdx + 1) % slides.length;
-                slides[nextIdx].className = "kb-slide active";
-            }, 7000); // Transitions views safely every 7 seconds
-        }
-
-        // Initialize execution setup instantly
-        initGrid();
+        window.onclick = function(event) {
+            var modal = document.getElementById('appModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
     </script>
 </body>
 </html>
