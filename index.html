@@ -621,6 +621,8 @@
                     var slide = document.createElement('div');
                     slide.className = 'ken-burns-slide';
                     slide.style.backgroundImage = 'url("' + data.screenshots[s] + '")';
+                    slide.style.backgroundSize = 'contain';
+                    slide.style.backgroundRepeat = 'no-repeat';
                     slide.style.animationDelay = (s * 5) + 's';
                     modalSlider.appendChild(slide);
                 }
