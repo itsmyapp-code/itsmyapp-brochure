@@ -29,7 +29,8 @@
         @media screen and (max-width: 1024px) { .card { width: calc(50% - 15px); } }
         @media screen and (max-width: 768px) { .card { width: 100%; } }
         .card:hover, .card:active { -webkit-transform: scale(1.02) translateY(-5px); transform: scale(1.02) translateY(-5px); border-color: #00e5ff; box-shadow: 0 10px 30px rgba(0, 229, 255, 0.1); }
-        .card-icon { font-size: 48px; margin-bottom: 20px; }
+        .card-icon { font-size: 48px; margin-bottom: 20px; display: flex; justify-content: center; align-items: center; min-height: 80px; }
+        .card-icon-img { width: 100%; height: auto; max-height: 80px; object-fit: contain; }
         .card-title { font-size: 22px; color: #ffffff; margin-bottom: 10px; }
         .card-desc { font-size: 15px; color: #a0aec0; }
 
@@ -53,20 +54,20 @@
         /* Modal Right Pane */
         .modal-right { width: 50%; position: relative; background-color: #0f1216; overflow: hidden; border-left: 1px solid #2d3748; }
         .slider-container { width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
-        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; background-size: cover; background-position: center; background-repeat: no-repeat; -webkit-transform: scale(1) translate(0, 0); transform: scale(1) translate(0, 0); }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; background-size: contain; background-position: center; background-repeat: no-repeat; -webkit-transform: scale(1) translate(0, 0); transform: scale(1) translate(0, 0); }
 
         @-webkit-keyframes kenburns {
             0% { opacity: 0; -webkit-transform: scale(1) translate(0px, 0px); }
             5% { opacity: 1; }
             33.33% { opacity: 1; }
-            38.33% { opacity: 0; -webkit-transform: scale(1.15) translate(-2%, -2%); }
+            38.33% { opacity: 0; -webkit-transform: scale(1.1) translate(-1%, -1%); }
             100% { opacity: 0; -webkit-transform: scale(1) translate(0px, 0px); }
         }
         @keyframes kenburns {
             0% { opacity: 0; transform: scale(1) translate(0px, 0px); }
             5% { opacity: 1; }
             33.33% { opacity: 1; }
-            38.33% { opacity: 0; transform: scale(1.15) translate(-2%, -2%); }
+            38.33% { opacity: 0; transform: scale(1.1) translate(-1%, -1%); }
             100% { opacity: 0; transform: scale(1) translate(0px, 0px); }
         }
         .slide.active-animation { -webkit-animation: kenburns 15s infinite linear; animation: kenburns 15s infinite linear; }
@@ -137,7 +138,7 @@
             {
                 id: 'syncbanana',
                 title: 'Sync Banana',
-                icon: '🍌',
+                icon: 'images/Sync_banana.png',
                 desc: 'The Zero-Cloud Photo Organizer. Automatically sort site visit photos by GPS.',
                 concept: 'Automatically sort your site visit photos by GPS location, convert HEIC files, and shield against duplicates without touching a cloud server.',
                 features: ['100% device-local processing', 'GPS automated folder sorting', 'HEIC to JPG fast conversion', 'Duplicate photo shielding'],
@@ -147,7 +148,7 @@
             {
                 id: 'itsmymerge',
                 title: 'Its My Merge',
-                icon: '📄',
+                icon: 'images/its_my_merge.png',
                 desc: 'A simple, powerful PDF merger for everyone. Fully private.',
                 concept: 'Merge, customize, and organize your PDF files with ease directly in your browser. Add headers, footers, and page numbers securely.',
                 features: ['Client-side PDF merging', 'Header and footer customization', 'Automated page numbering', 'Zero server data transfer'],
@@ -157,7 +158,7 @@
             {
                 id: 'itsmyidea',
                 title: 'Its My Idea',
-                icon: '💡',
+                icon: 'images/its_my_idea_logo.png',
                 desc: 'Securely store your ideas with PIN encryption directly in your browser.',
                 concept: 'A secure, offline-first vault for your brilliant ideas. Everything is PIN encrypted and strictly stays on your local device.',
                 features: ['Military-grade PIN encryption', 'Full offline support', 'Zero cloud syncing', 'Lightning fast interface'],
@@ -167,7 +168,7 @@
             {
                 id: 'workpics',
                 title: 'Work Pics',
-                icon: '📸',
+                icon: 'images/WorkPhotoApp.png',
                 desc: 'Keep your work and personal photos separate on Android.',
                 concept: 'An Android app that captures images directly into a dedicated, isolated folder so site visits never clutter your personal family gallery.',
                 features: ['Isolated gallery storage', 'Direct camera integration', 'Batch export capabilities', 'No cloud mixing'],
@@ -177,7 +178,7 @@
             {
                 id: 'itsmyqr',
                 title: 'Its My QR Code',
-                icon: '🔳',
+                icon: 'images/its-my-qr-logo.png',
                 desc: 'The Zero-Backend QR Generator. Create stunning, branded QR codes.',
                 concept: 'Create stunning, branded QR codes in seconds. Completely private, browser-based, and fully compliant with 2027 legal standards.',
                 features: ['Custom branding and colors', 'Zero backend tracking', 'Instant high-res SVG/PNG export', 'Compliant privacy design'],
@@ -187,7 +188,7 @@
             {
                 id: 'timetrack',
                 title: 'Time Track Invoice',
-                icon: '⏱️',
+                icon: 'images/timetrackinvoice.png',
                 desc: 'Effortless Time Tracking, Professional Invoicing.',
                 concept: 'Designed for freelancers and contract workers, this app transforms how you log billable hours and immediately convert them into beautiful invoices.',
                 features: ['One-tap time tracking', 'Automated PDF invoice generation', 'Client management database', 'Tax-ready exporting'],
@@ -197,7 +198,7 @@
             {
                 id: 'bargp',
                 title: 'Bar GP',
-                icon: '🍺',
+                icon: 'images/BarGP_Logo.png',
                 desc: 'The definitive tool for calculating Gross Profit percentages.',
                 concept: 'Optimize your bar\'s profitability instantly. Manage your margins, calculate pour costs, and protect your bottom line from shrinkage.',
                 features: ['Live margin calculations', 'Menu pricing optimizer', 'Pour cost tracking', 'Historical GP analysis'],
@@ -207,7 +208,7 @@
             {
                 id: 'itsmykeys',
                 title: 'Its My Keys',
-                icon: '🔑',
+                icon: 'images/its-my-keys-logo.png',
                 desc: 'The Digital Replacement for Your Physical Key Log.',
                 concept: 'A comprehensive digital ledger to track keys, access cards, and high-value equipment checked out to staff or contractors in real-time.',
                 features: ['Digital sign-out signatures', 'Overdue key alerts', 'Full audit trail history', 'Barcode scanning support'],
@@ -217,7 +218,7 @@
             {
                 id: 'itsmykeybox',
                 title: 'Its My Keybox',
-                icon: '🔒',
+                icon: 'images/Its-My-Keybox.png',
                 desc: 'Manage and share access codes for properties.',
                 concept: 'The simple, secure solution for property managers and Airbnb hosts to centrally manage and securely share combination codes for lockboxes.',
                 features: ['Central code vault', 'Secure guest sharing links', 'Code rotation reminders', 'Multi-property dashboard'],
@@ -227,7 +228,7 @@
             {
                 id: 'itsmysubs',
                 title: 'Its My Subs',
-                icon: '💳',
+                icon: 'images/its-my-subs-logo.png',
                 desc: 'Track your recurring payments and take back control.',
                 concept: 'Stop subscription creep. Track every recurring payment, from Netflix to car tax, and get alerts before you are charged again.',
                 features: ['Renewal date alerts', 'Monthly cost aggregation', 'Categorized spending', 'Contract end-date tracking'],
@@ -237,7 +238,7 @@
             {
                 id: 'packittrackit',
                 title: 'Packit Trackit',
-                icon: '📦',
+                icon: 'images/Packit_Trackit.png',
                 desc: 'Digital X-Ray Vision for your boxes. AI-powered cataloging.',
                 concept: 'Snap a photo, let AI catalog the contents, and instantly search your entire physical inventory from your phone. Never lose an item in a box again.',
                 features: ['AI content recognition', 'Instant global search', 'QR code box tagging', 'Multi-device sync'],
@@ -247,7 +248,7 @@
             {
                 id: 'wholehospitality',
                 title: 'Whole Hospitality',
-                icon: '🏨',
+                icon: 'images/whole_hospitality_logo.png',
                 desc: 'The only hospitality platform that starts with an on-site audit.',
                 concept: 'We find the leaks in your Gross Profit, stock, and operations, then give you the customized digital tools to plug them for good.',
                 features: ['Comprehensive operational audits', 'Custom KPI dashboards', 'Staff training modules', 'Leak detection reporting'],
@@ -257,7 +258,7 @@
             {
                 id: 'itsmycutlist',
                 title: 'Its My Cutlist',
-                icon: '🪚',
+                icon: 'images/cutlist-logo.png',
                 desc: 'A cloud-connected parametric design and 2D optimization tool.',
                 concept: 'An algorithmic cut-sheet generator designed specifically for carpenters to calculate the most efficient way to break down sheet goods, minimizing waste.',
                 features: ['Advanced nesting algorithm', 'Kerf thickness calculations', 'Exportable PDF shop diagrams', 'Cost estimation tracking'],
@@ -267,7 +268,7 @@
             {
                 id: 'coastai',
                 title: 'CoastAI',
-                icon: '🤖',
+                icon: 'images/logo.png',
                 desc: 'Custom AI agents to handle your daily operations.',
                 concept: 'CoastAI provides custom AI agents to handle your customer support, appointment scheduling, and internal workflow automation.',
                 features: ['24/7 AI receptionists', 'Automated scheduling', 'Custom knowledge base integration', 'Multi-channel support'],
@@ -290,7 +291,14 @@
 
             var icon = document.createElement('div');
             icon.className = 'card-icon';
-            icon.innerText = app.icon;
+            if (app.icon.indexOf('images/') === 0) {
+                var img = document.createElement('img');
+                img.src = app.icon;
+                img.className = 'card-icon-img';
+                icon.appendChild(img);
+            } else {
+                icon.innerText = app.icon;
+            }
 
             var title = document.createElement('h2');
             title.className = 'card-title';
@@ -326,6 +334,11 @@
 
             var slides = document.querySelectorAll('.slide');
             for (var k = 0; k < slides.length; k++) {
+                if (data.icon.indexOf('images/') === 0) {
+                    slides[k].style.backgroundImage = "url('" + data.icon + "')";
+                } else {
+                    slides[k].style.backgroundImage = "";
+                }
                 slides[k].className = slides[k].className.replace(' active-animation', '');
                 void slides[k].offsetWidth;
                 slides[k].className += ' active-animation';
