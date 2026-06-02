@@ -24,6 +24,8 @@
         .header h1 { font-size: 42px; font-weight: 700; letter-spacing: -0.5px; color: #ffffff; margin-bottom: 15px; }
         .header p { font-size: 18px; color: #7a8d9e; max-width: 600px; margin: 0 auto; line-height: 1.5; }
 
+        .section-title { font-size: 26px; color: #00e5ff; text-align: center; margin: 60px 0 30px 0; text-transform: uppercase; letter-spacing: 2px; }
+
         .card-grid { display: -webkit-box; display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-pack: center; -webkit-justify-content: center; justify-content: center; gap: 30px; width: 100%; max-width: 1200px; margin: 0 auto; }
 
         /* Interactive Cards */
@@ -95,8 +97,19 @@
             <p>Discover a collection of user-friendly apps designed to solve real-world problems and make your life easier.</p>
         </header>
 
-        <div class="card-grid" id="appCardsContainer">
-            <!-- Cards will be dynamically injected here by ES5 JS -->
+        <h2 class="section-title">Apps</h2>
+        <div class="card-grid" id="appsContainer">
+            <!-- Populated by JS -->
+        </div>
+
+        <h2 class="section-title">Websites</h2>
+        <div class="card-grid" id="websitesContainer">
+            <!-- Populated by JS -->
+        </div>
+
+        <h2 class="section-title">Website Additions</h2>
+        <div class="card-grid" id="additionsContainer">
+            <!-- Populated by JS -->
         </div>
     </div>
 
@@ -139,10 +152,10 @@
     <script>
         /* Strict ES5 JavaScript */
         var appDatabase = [
+            /* --- APPS --- */
             {
-                id: 'syncbanana',
-                title: 'Sync Banana',
-                icon: 'images/Sync_banana.png',
+                id: 'syncbanana', category: 'app',
+                title: 'Sync Banana', icon: 'images/Sync_banana.png',
                 desc: 'The Zero-Cloud Photo Organizer. Automatically sort site visit photos by GPS.',
                 concept: 'Automatically sort your site visit photos by GPS location, convert HEIC files, and shield against duplicates without touching a cloud server.',
                 features: ['100% device-local processing', 'GPS automated folder sorting', 'HEIC to JPG fast conversion', 'Duplicate photo shielding'],
@@ -150,9 +163,8 @@
                 url: 'https://firebasestorage.googleapis.com/v0/b/its-my-app-platform.firebasestorage.app/o/downloads%2Fsync_banana.exe?alt=media'
             },
             {
-                id: 'itsmymerge',
-                title: 'Its My Merge',
-                icon: 'images/its_my_merge.png',
+                id: 'itsmymerge', category: 'app',
+                title: 'Its My Merge', icon: 'images/its_my_merge.png',
                 desc: 'A simple, powerful PDF merger for everyone. Fully private.',
                 concept: 'Merge, customize, and organize your PDF files with ease directly in your browser. Add headers, footers, and page numbers securely.',
                 features: ['Client-side PDF merging', 'Header and footer customization', 'Automated page numbering', 'Zero server data transfer'],
@@ -160,9 +172,8 @@
                 url: 'https://its-my-merge.web.app/'
             },
             {
-                id: 'itsmyidea',
-                title: 'Its My Idea',
-                icon: 'images/its_my_idea_logo.png',
+                id: 'itsmyidea', category: 'app',
+                title: 'Its My Idea', icon: 'images/its_my_idea_logo.png',
                 desc: 'Securely store your ideas with PIN encryption directly in your browser.',
                 concept: 'A secure, offline-first vault for your brilliant ideas. Everything is PIN encrypted and strictly stays on your local device.',
                 features: ['Military-grade PIN encryption', 'Full offline support', 'Zero cloud syncing', 'Lightning fast interface'],
@@ -170,9 +181,8 @@
                 url: 'https://its-my-idea-1950e.web.app/'
             },
             {
-                id: 'workpics',
-                title: 'Work Pics',
-                icon: 'images/WorkPhotoApp.png',
+                id: 'workpics', category: 'app',
+                title: 'Work Pics', icon: 'images/WorkPhotoApp.png',
                 desc: 'Keep your work and personal photos separate on Android.',
                 concept: 'An Android app that captures images directly into a dedicated, isolated folder so site visits never clutter your personal family gallery.',
                 features: ['Isolated gallery storage', 'Direct camera integration', 'Batch export capabilities', 'No cloud mixing'],
@@ -180,9 +190,8 @@
                 url: 'https://firebasestorage.googleapis.com/v0/b/its-my-app-platform.firebasestorage.app/o/downloads%2FWork_Photo.apk?alt=media'
             },
             {
-                id: 'itsmyqr',
-                title: 'Its My QR Code',
-                icon: 'images/its-my-qr-logo.png',
+                id: 'itsmyqr', category: 'app',
+                title: 'Its My QR Code', icon: 'images/its-my-qr-logo.png',
                 desc: 'The Zero-Backend QR Generator. Create stunning, branded QR codes.',
                 concept: 'Create stunning, branded QR codes in seconds. Completely private, browser-based, and fully compliant with 2027 legal standards.',
                 features: ['Custom branding and colors', 'Zero backend tracking', 'Instant high-res SVG/PNG export', 'Compliant privacy design'],
@@ -190,9 +199,8 @@
                 url: 'https://its-my-qr.vercel.app/'
             },
             {
-                id: 'timetrack',
-                title: 'Time Track Invoice',
-                icon: 'images/timetrackinvoice.png',
+                id: 'timetrack', category: 'app',
+                title: 'Time Track Invoice', icon: 'images/timetrackinvoice.png',
                 desc: 'Effortless Time Tracking, Professional Invoicing.',
                 concept: 'Designed for freelancers and contract workers, this app transforms how you log billable hours and immediately convert them into beautiful invoices.',
                 features: ['One-tap time tracking', 'Automated PDF invoice generation', 'Client management database', 'Tax-ready exporting'],
@@ -200,9 +208,8 @@
                 url: 'https://www.itsmyapp.co.uk/apps/time-track-invoice'
             },
             {
-                id: 'bargp',
-                title: 'Bar GP',
-                icon: 'images/BarGP_Logo.png',
+                id: 'bargp', category: 'app',
+                title: 'Bar GP', icon: 'images/BarGP_Logo.png',
                 desc: 'The definitive tool for calculating Gross Profit percentages.',
                 concept: 'Optimize your bar\'s profitability instantly. Manage your margins, calculate pour costs, and protect your bottom line from shrinkage.',
                 features: ['Live margin calculations', 'Menu pricing optimizer', 'Pour cost tracking', 'Historical GP analysis'],
@@ -210,9 +217,8 @@
                 url: 'https://www.itsmyapp.co.uk/apps/bar-gp'
             },
             {
-                id: 'itsmykeys',
-                title: 'Its My Keys',
-                icon: 'images/its-my-keys-logo.png',
+                id: 'itsmykeys', category: 'app',
+                title: 'Its My Keys', icon: 'images/its-my-keys-logo.png',
                 desc: 'The Digital Replacement for Your Physical Key Log.',
                 concept: 'A comprehensive digital ledger to track keys, access cards, and high-value equipment checked out to staff or contractors in real-time.',
                 features: ['Digital sign-out signatures', 'Overdue key alerts', 'Full audit trail history', 'Barcode scanning support'],
@@ -220,9 +226,8 @@
                 url: 'https://www.itsmyapp.co.uk/apps/its-my-keys'
             },
             {
-                id: 'itsmykeybox',
-                title: 'Its My Keybox',
-                icon: 'images/Its-My-Keybox.png',
+                id: 'itsmykeybox', category: 'app',
+                title: 'Its My Keybox', icon: 'images/Its-My-Keybox.png',
                 desc: 'Manage and share access codes for properties.',
                 concept: 'The simple, secure solution for property managers and Airbnb hosts to centrally manage and securely share combination codes for lockboxes.',
                 features: ['Central code vault', 'Secure guest sharing links', 'Code rotation reminders', 'Multi-property dashboard'],
@@ -230,9 +235,8 @@
                 url: 'https://www.itsmyapp.co.uk/apps/its-my-keybox'
             },
             {
-                id: 'itsmysubs',
-                title: 'Its My Subs',
-                icon: 'images/its-my-subs-logo.png',
+                id: 'itsmysubs', category: 'app',
+                title: 'Its My Subs', icon: 'images/its-my-subs-logo.png',
                 desc: 'Track your recurring payments and take back control.',
                 concept: 'Stop subscription creep. Track every recurring payment, from Netflix to car tax, and get alerts before you are charged again.',
                 features: ['Renewal date alerts', 'Monthly cost aggregation', 'Categorized spending', 'Contract end-date tracking'],
@@ -240,9 +244,26 @@
                 url: 'https://www.itsmyapp.co.uk/apps/its-my-subs'
             },
             {
-                id: 'packittrackit',
-                title: 'Packit Trackit',
-                icon: 'images/Packit_Trackit.png',
+                id: 'itsmybanking', category: 'app',
+                title: 'Its My Banking', icon: 'images/its-my-banking-logo.png',
+                desc: 'A comprehensive banking dashboard to manage your accounts.',
+                concept: 'A comprehensive banking dashboard to manage your accounts, reconcile transactions, and track your finances with ease.',
+                features: ['Secure login', 'Detailed reporting', 'Transaction reconciliation', 'Real-time account views'],
+                market: 'Individuals and small businesses managing cash flow.',
+                url: 'https://www.itsmyapp.co.uk/apps/its-my-banking'
+            },
+            {
+                id: 'itsmyarcade', category: 'app',
+                title: 'Its My Arcade', icon: 'images/its-my-arcade-logo.png',
+                desc: 'A retro gaming experience bringing back the 80s arcade vibe.',
+                concept: 'A retro gaming experience bringing back the 80s arcade vibe. Dive into nostalgia with classic pixel-perfect action.',
+                features: ['Classic gameplay mechanics', 'Neon aesthetics', 'High score leaderboards', 'Cross-platform play'],
+                market: 'Gamers and arcade enthusiasts.',
+                url: 'https://www.itsmyapp.co.uk/apps/its-my-arcade'
+            },
+            {
+                id: 'packittrackit', category: 'app',
+                title: 'Packit Trackit', icon: 'images/Packit_Trackit.png',
                 desc: 'Digital X-Ray Vision for your boxes. AI-powered cataloging.',
                 concept: 'Snap a photo, let AI catalog the contents, and instantly search your entire physical inventory from your phone. Never lose an item in a box again.',
                 features: ['AI content recognition', 'Instant global search', 'QR code box tagging', 'Multi-device sync'],
@@ -250,19 +271,35 @@
                 url: 'https://www.itsmyapp.co.uk/apps/packit-trackit'
             },
             {
-                id: 'wholehospitality',
-                title: 'Whole Hospitality',
-                icon: 'images/whole_hospitality_logo.png',
-                desc: 'The only hospitality platform that starts with an on-site audit.',
-                concept: 'We find the leaks in your Gross Profit, stock, and operations, then give you the customized digital tools to plug them for good.',
-                features: ['Comprehensive operational audits', 'Custom KPI dashboards', 'Staff training modules', 'Leak detection reporting'],
-                market: 'Hotels, resorts, and large-scale hospitality venues.',
-                url: 'https://wholehospitality.co.uk/'
+                id: 'poolmate', category: 'app',
+                title: 'Pool Mate', icon: 'images/Pool_Mate.webp',
+                desc: 'Your in-pocket pool game assistant.',
+                concept: 'Flip a coin to decide the break, auto-assign ball colours from the first pot, and manage fouls and 2-visit penalties with a tap.',
+                features: ['Coin flip integration', 'Auto-assign colors', 'Foul tracker', 'Penalty manager'],
+                market: 'Pub pool players and amateur league members.',
+                url: 'https://www.itsmyapp.co.uk/apps/pool-mate'
             },
             {
-                id: 'itsmycutlist',
-                title: 'Its My Cutlist',
-                icon: 'images/cutlist-logo.png',
+                id: 'killerpool', category: 'app',
+                title: 'Killer Pool', icon: 'images/Killer_Pool.webp',
+                desc: 'The Deck of Doom. A card-based pool eliminator game.',
+                concept: 'A card-based pool eliminator game for 2–13 players. Each player is secretly assigned a card — pot yours and survive, miss and lose a life.',
+                features: ['Multiplayer tracking', 'Secret card assignment', 'Life counter', 'Dynamic player elimination'],
+                market: 'Social groups and pool halls.',
+                url: 'https://www.itsmyapp.co.uk/apps/killer-pool'
+            },
+            {
+                id: 'itsmypaint', category: 'app',
+                title: 'Its My Paint', icon: 'images/its-my-paint.png',
+                desc: 'The professional-grade mobile tool for decorating contractors.',
+                concept: 'The professional-grade mobile tool for decorating contractors. Manage jobs, generate print-optimized PDF reports, and streamline your workflow.',
+                features: ['Job management dashboard', 'PDF report generation', 'Material calculators', 'Branded export'],
+                market: 'Decorators, painters, and interior contractors.',
+                url: 'https://www.itsmyapp.co.uk/apps/its-my-paint'
+            },
+            {
+                id: 'itsmycutlist', category: 'app',
+                title: 'Its My Cutlist', icon: 'images/cutlist-logo.png',
                 desc: 'A cloud-connected parametric design and 2D optimization tool.',
                 concept: 'An algorithmic cut-sheet generator designed specifically for carpenters to calculate the most efficient way to break down sheet goods, minimizing waste.',
                 features: ['Advanced nesting algorithm', 'Kerf thickness calculations', 'Exportable PDF shop diagrams', 'Cost estimation tracking'],
@@ -270,21 +307,85 @@
                 url: 'https://www.itsmyapp.co.uk/apps/its-my-cutlist'
             },
             {
-                id: 'coastai',
-                title: 'CoastAI',
-                icon: 'images/logo.png',
-                desc: 'Custom AI agents to handle your daily operations.',
-                concept: 'CoastAI provides custom AI agents to handle your customer support, appointment scheduling, and internal workflow automation.',
-                features: ['24/7 AI receptionists', 'Automated scheduling', 'Custom knowledge base integration', 'Multi-channel support'],
-                market: 'Small businesses and service-based enterprises.',
-                url: 'https://coastalai.co.uk/'
+                id: '3dmodeler', category: 'app',
+                title: '3D Furniture Modeler', icon: 'images/modeler-logo.png',
+                desc: 'An interactive, rotatable 3D cabinet design tool.',
+                concept: 'An interactive, rotatable 3D cabinet design tool. Configure wardrobes and drawer boxes in real-time, inspect construction joints in wireframe.',
+                features: ['Real-time 3D rotation', 'Wireframe inspection', 'Direct export to Cutlist', 'Parametric dimensioning'],
+                market: 'Furniture designers, joiners, and DIY builders.',
+                url: 'https://www.itsmyapp.co.uk/apps/3d-furniture-modeler'
+            },
+
+            /* --- WEBSITES --- */
+            {
+                id: 'theresidence', category: 'website',
+                title: 'The Residence', icon: 'images/the_residence_small.png',
+                desc: 'A website designed to showcase Dartmouth\'s newest co-living property.',
+                concept: 'A stunningly refurbished property website redefining shared living, offering a perfect blend of private accommodation and vibrant community.',
+                features: ['High-resolution galleries', 'Integrated inquiry forms', 'Interactive property maps', 'SEO optimized architecture'],
+                market: 'Property developers and real estate marketers.',
+                url: 'https://theresidencedartmouth.co.uk/'
+            },
+            {
+                id: 'wholehospitality', category: 'website',
+                title: 'Whole Hospitality', icon: 'images/whole_hospitality_logo.png',
+                desc: 'The only hospitality platform that starts with an on-site audit.',
+                concept: 'We find the leaks in your Gross Profit, stock, and operations, then give you the customized digital tools to plug them for good.',
+                features: ['Comprehensive operational audits', 'Custom KPI dashboards', 'Staff training modules', 'Leak detection reporting'],
+                market: 'Hotels, resorts, and large-scale hospitality venues.',
+                url: 'https://wholehospitality.co.uk/'
+            },
+
+            /* --- WEBSITE ADDITIONS --- */
+            {
+                id: 'calendly', category: 'addition',
+                title: 'Calendly Booking Widget', icon: 'images/calendly_demo.png',
+                desc: 'Integrate seamless scheduling into your existing websites.',
+                concept: 'See how we integrate seamless scheduling into websites. This demo shows the Calendly booking widget in action.',
+                features: ['Zero-code integration', 'Timezone auto-detection', 'Google Calendar sync', 'Automated reminders'],
+                market: 'Consultants, coaches, and service-based businesses.',
+                url: 'https://www.itsmyapp.co.uk/calendly-demo'
+            },
+            {
+                id: 'packitbrochure', category: 'addition',
+                title: 'Digital Brochure', icon: 'images/Packit_Trackit.png',
+                desc: 'An interactive digital brochure featuring a Ken Burns hero slideshow.',
+                concept: 'An interactive digital brochure featuring a Ken Burns hero slideshow, animated feature cards, and a branded logo video.',
+                features: ['Ken Burns animations', 'Animated feature cards', 'Responsive design', 'High conversion CTAs'],
+                market: 'Product managers and digital marketers.',
+                url: 'https://www.itsmyapp.co.uk/packit-trackit-brochure'
+            },
+            {
+                id: 'packitlogo', category: 'addition',
+                title: 'Animated Logo', icon: 'images/Packit_Trackit.png',
+                desc: 'A stunning example of a branded animated logo.',
+                concept: 'A stunning example of a branded animated logo — combining a looping video, pulsing glow, motion ring, and branded audio.',
+                features: ['Looping video integration', 'Pulsing glow effects', 'Motion ring animation', 'Branded audio tracks'],
+                market: 'Brands looking for premium first impressions.',
+                url: 'https://www.itsmyapp.co.uk/packit-trackit-logo'
+            },
+            {
+                id: 'itsmyappvoice', category: 'addition',
+                title: 'ItsMyApp Voice', icon: 'images/its-myapp-voice-logo.png',
+                desc: 'Your 24/7 AI Receptionist and Digital Brochure.',
+                concept: 'Your 24/7 AI Receptionist and Digital Brochure. Instant, intelligent answers for your customers without the voicemail boxes.',
+                features: ['Natural language processing', '24/7 availability', 'Custom knowledge base', 'Direct call-to-action routing'],
+                market: 'Customer support teams and small businesses.',
+                url: 'https://www.itsmyapp.co.uk/voice-ai'
             }
         ];
 
-        /* Render Cards Dynamically */
-        var cardsContainer = document.getElementById('appCardsContainer');
+        /* Render Cards Dynamically into Sections */
+        var containers = {
+            'app': document.getElementById('appsContainer'),
+            'website': document.getElementById('websitesContainer'),
+            'addition': document.getElementById('additionsContainer')
+        };
+
         for (var i = 0; i < appDatabase.length; i++) {
             var app = appDatabase[i];
+            var container = containers[app.category];
+            if (!container) continue;
             
             var card = document.createElement('div');
             card.className = 'card';
@@ -316,7 +417,7 @@
             card.appendChild(title);
             card.appendChild(desc);
             
-            cardsContainer.appendChild(card);
+            container.appendChild(card);
         }
 
         function openModal(index) {
