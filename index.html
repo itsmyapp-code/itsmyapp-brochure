@@ -51,7 +51,8 @@
         .ken-burns-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0; }
         .ken-burns-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; animation: kenburns 15s infinite; }
         
-        .card-hero { height: 180px; width: 100%; background: -webkit-linear-gradient(135deg, #141e30, #243b55); position: relative; background-size: cover; background-position: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .card-hero { height: 180px; width: 100%; background: -webkit-linear-gradient(135deg, #141e30, #243b55); position: relative; background-size: cover; background-position: center; border-bottom: 1px solid rgba(255,255,255,0.05); border-top-left-radius: 20px; border-top-right-radius: 20px; }
+        .zero-server-badge { position: absolute; top: 15px; right: 15px; background-color: #00ff88; color: #1a1e24; font-size: 10px; font-weight: 900; padding: 5px 10px; border-radius: 4px; z-index: 10; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
         .card-icon { position: absolute; bottom: -30px; left: 30px; width: 70px; height: 70px; background-color: #1a1e24; border-radius: 16px; display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-align: center; -webkit-align-items: center; align-items: center; -webkit-box-pack: center; -webkit-justify-content: center; justify-content: center; padding: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 1px solid #2d3748; z-index: 1; }
         .card-icon-img { width: 100%; height: auto; max-height: 50px; object-fit: contain; }
         
@@ -133,7 +134,7 @@
         <section class="about-us">
             <h2>COMPLIANCE & PRIVACY ASSURANCE</h2>
             <h3>The Zero-Server Architecture Manifesto</h3>
-            <p>Every application powered by itsmyapp.co.uk operates on a zero-surveillance, client-side execution model. Unlike traditional SaaS platforms that ingest, aggregate, and monetize your operational data on external infrastructure, our utilities process 100% of your data locally within the browser context. No external cloud databases, no tracking pixels, and no data leaks. Your business intelligence remains entirely your own.</p>
+            <p>Our designated Zero-Server utilities operate on a strict zero-surveillance, client-side execution model. Unlike traditional SaaS platforms that ingest, aggregate, and monetize your operational data on external infrastructure, these specific applications process 100% of your data locally within the device context. No external cloud databases, no tracking pixels, and no data leaks. Your personal and business data remains entirely your own.</p>
             
             <div class="ascii-diagram-main">
 [Your Device / Local Browser]
@@ -148,7 +149,12 @@
             </ul>
         </section>
 
-        <h2 class="section-title">THE APPLICATION PORTFOLIO</h2>
+        <h2 class="section-title">ZERO SERVER // FREE UTILITIES</h2>
+        <div class="card-grid" id="zeroServerContainer">
+            <!-- Populated by JS -->
+        </div>
+
+        <h2 class="section-title">THE FULL APPLICATION PORTFOLIO</h2>
         <div class="card-grid" id="appsContainer">
             <!-- Populated by JS -->
         </div>
@@ -256,7 +262,7 @@
 
             
             {
-                id: 'syncbanana', category: 'app',
+                id: 'syncbanana', category: 'zeroserver',
                 title: 'Sync Banana', icon: 'images/Sync_banana.png',
                 desc: 'The Zero-Cloud Photo Organizer. Automatically sort site visit photos by GPS.',
                 concept: 'Automatically sort your site visit photos by GPS location, convert HEIC files, and shield against duplicates without touching a cloud server.',
@@ -266,7 +272,7 @@
                 url: 'https://firebasestorage.googleapis.com/v0/b/its-my-app-platform.firebasestorage.app/o/downloads%2Fsync_banana.exe?alt=media'
             },
             {
-                id: 'itsmymerge', category: 'app',
+                id: 'itsmymerge', category: 'zeroserver',
                 title: 'Its My Merge', icon: 'images/its_my_merge.png',
                 desc: 'A simple, powerful PDF merger for everyone. Fully private.',
                 concept: 'Merge, customize, and organize your PDF files with ease directly in your browser. Add headers, footers, and page numbers securely.',
@@ -278,7 +284,7 @@
                 screenshots: ['images/Screenshot 2025-10-05 123332.png', 'images/Screenshot 2025-10-05 123554.png', 'images/Screenshot 2025-10-05 123716.png']
             },
             {
-                id: 'itsmyidea', category: 'app',
+                id: 'itsmyidea', category: 'zeroserver',
                 title: 'Its My Idea', icon: 'images/its_my_idea_logo.png',
                 desc: 'Securely store your ideas with PIN encryption directly in your browser.',
                 concept: 'A secure, offline-first vault for your brilliant ideas. Everything is PIN encrypted and strictly stays on your local device.',
@@ -288,7 +294,7 @@
                 url: 'https://its-my-idea-1950e.web.app/'
             },
             {
-                id: 'workpics', category: 'app',
+                id: 'workpics', category: 'zeroserver',
                 title: 'Work Pics', icon: 'images/WorkPhotoApp.png',
                 desc: 'Keep your work and personal photos separate on Android.',
                 concept: 'An Android app that captures images directly into a dedicated, isolated folder so site visits never clutter your personal family gallery.',
@@ -298,7 +304,7 @@
                 url: 'https://firebasestorage.googleapis.com/v0/b/its-my-app-platform.firebasestorage.app/o/downloads%2FWork_Photo.apk?alt=media'
             },
             {
-                id: 'itsmyqr', category: 'app',
+                id: 'itsmyqr', category: 'zeroserver',
                 title: 'Its My QR Code', icon: 'images/its-my-qr-logo.png',
                 desc: 'The Zero-Backend QR Generator. Create stunning, branded QR codes.',
                 concept: 'Create stunning, branded QR codes in seconds. Completely private, browser-based, and fully compliant with 2027 legal standards.',
@@ -477,6 +483,7 @@
 
         /* Render Cards Dynamically into Sections */
         var containers = {
+            'zeroserver': document.getElementById('zeroServerContainer'),
             'app': document.getElementById('appsContainer'),
             'future': document.getElementById('futureContainer'),
             'website': document.getElementById('websitesContainer'),
@@ -545,7 +552,18 @@
 
             var action = document.createElement('div');
             action.className = 'card-action';
-            action.innerText = 'Explore App';
+
+            if (app.category === 'zeroserver') {
+                var badge = document.createElement('div');
+                badge.className = 'zero-server-badge';
+                badge.innerText = 'ZERO SERVER // FREE';
+                hero.appendChild(badge);
+                
+                action.innerText = 'GO PRIVATE (FREE)';
+                action.style.color = '#00ff88';
+            } else {
+                action.innerText = 'Explore App';
+            }
 
             content.appendChild(tagsContainer);
             content.appendChild(title);
