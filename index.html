@@ -19,10 +19,11 @@
 
         /* Home View Dashboard */
         .dashboard { display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; flex-direction: column; min-height: 100vh; padding: 40px; }
-        .header { text-align: center; margin-bottom: 30px; display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; flex-direction: column; -webkit-box-align: center; -webkit-align-items: center; align-items: center; }
-        .header-logo { width: 120px; height: auto; margin-bottom: 20px; }
-        .header h1 { font-size: 42px; font-weight: 700; letter-spacing: -0.5px; color: #ffffff; margin-bottom: 15px; }
-        .header p { font-size: 18px; color: #7a8d9e; max-width: 600px; margin: 0 auto; line-height: 1.5; }
+        .header { position: relative; overflow: hidden; text-align: center; margin: -40px -40px 40px -40px; padding: 80px 40px; display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; flex-direction: column; -webkit-box-align: center; -webkit-align-items: center; align-items: center; border-bottom: 1px solid rgba(0, 229, 255, 0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .header-content { position: relative; z-index: 2; display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; flex-direction: column; -webkit-box-align: center; -webkit-align-items: center; align-items: center; max-width: 800px; }
+        .header-logo { width: 120px; height: auto; margin-bottom: 20px; -webkit-filter: drop-shadow(0 4px 15px rgba(0,0,0,0.8)); filter: drop-shadow(0 4px 15px rgba(0,0,0,0.8)); }
+        .header h1 { font-size: 42px; font-weight: 700; letter-spacing: -0.5px; color: #ffffff; margin-bottom: 15px; text-shadow: 0 4px 15px rgba(0,0,0,0.8); }
+        .header p { font-size: 18px; color: #ffffff; max-width: 600px; margin: 0 auto; line-height: 1.5; text-shadow: 0 4px 15px rgba(0,0,0,0.8); }
 
         /* About Us Section */
         .about-us { max-width: 900px; margin: 0 auto 60px auto; text-align: center; background: rgba(36, 41, 50, 0.6); border: 1px solid rgba(0, 229, 255, 0.1); border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
@@ -126,9 +127,16 @@
 
     <div class="dashboard">
         <header class="header">
-            <img src="images/itsmyapp_logo.png" alt="ItsMyApp Logo" class="header-logo">
-            <h1>Innovative Apps, Simplified.</h1>
-            <p>Discover a collection of user-friendly apps designed to solve real-world problems and make your life easier.</p>
+            <div class="ken-burns-container" style="border-radius: 0;">
+                <div class="ken-burns-slide" style="background-image: url('images/hero_bg_1.png'); animation-delay: 0s;"></div>
+                <div class="ken-burns-slide" style="background-image: url('images/hero_bg_2.png'); animation-delay: 5s;"></div>
+                <div class="ken-burns-slide" style="background-image: url('images/hero_bg_1.png'); animation-delay: 10s; transform: scaleX(-1);"></div>
+            </div>
+            <div class="header-content">
+                <img src="images/itsmyapp_logo.png" alt="ItsMyApp Logo" class="header-logo">
+                <h1>Innovative Apps, Simplified.</h1>
+                <p>Discover a collection of user-friendly apps designed to solve real-world problems and make your life easier.</p>
+            </div>
         </header>
 
         <section class="about-us">
@@ -276,12 +284,10 @@
                 title: 'Its My Merge', icon: 'images/its_my_merge.png',
                 desc: 'A simple, powerful PDF merger for everyone. Fully private.',
                 concept: 'Merge, customize, and organize your PDF files with ease directly in your browser. Add headers, footers, and page numbers securely.',
-                detailedCopy: '',
+                detailedCopy: '<h4>App Screenshots</h4><div style="display:flex; gap:15px; margin-top:15px; overflow-x:auto; padding-bottom:10px;"><div style="flex: 0 0 200px; height: 140px; border: 2px dashed #00e5ff; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(0,229,255,0.05); color: #00e5ff; font-weight: bold; font-size: 12px; text-transform: uppercase;">Screenshot 1</div><div style="flex: 0 0 200px; height: 140px; border: 2px dashed #00e5ff; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(0,229,255,0.05); color: #00e5ff; font-weight: bold; font-size: 12px; text-transform: uppercase;">Screenshot 2</div><div style="flex: 0 0 200px; height: 140px; border: 2px dashed #00e5ff; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(0,229,255,0.05); color: #00e5ff; font-weight: bold; font-size: 12px; text-transform: uppercase;">Screenshot 3</div></div>',
                 features: ['Client-side PDF merging', 'Header and footer customization', 'Automated page numbering', 'Zero server data transfer'],
                 market: 'Students, accountants, and administrative professionals.',
-                url: 'https://its-my-merge.web.app/',
-                heroImages: ['images/Screenshot 2025-10-05 123332.png', 'images/Screenshot 2025-10-05 123554.png', 'images/Screenshot 2025-10-05 123716.png'],
-                screenshots: ['images/Screenshot 2025-10-05 123332.png', 'images/Screenshot 2025-10-05 123554.png', 'images/Screenshot 2025-10-05 123716.png']
+                url: 'https://its-my-merge.web.app/'
             },
             {
                 id: 'itsmyidea', category: 'zeroserver',
