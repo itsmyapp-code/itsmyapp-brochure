@@ -46,8 +46,13 @@
         @media screen and (max-width: 768px) { .card { width: 100%; } }
         .card:hover, .card:active { -webkit-transform: scale(1.03) translateY(-8px); transform: scale(1.03) translateY(-8px); border-color: #00e5ff; box-shadow: 0 20px 40px rgba(0, 229, 255, 0.15); }
         
+        /* Ken Burns Effect */
+        @keyframes kenburns { 0% { transform: scale(1); opacity: 0; } 5% { opacity: 1; } 28% { opacity: 1; } 33% { opacity: 0; transform: scale(1.05); } 100% { opacity: 0; transform: scale(1.05); } }
+        .ken-burns-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0; }
+        .ken-burns-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; animation: kenburns 15s infinite; }
+        
         .card-hero { height: 180px; width: 100%; background: -webkit-linear-gradient(135deg, #141e30, #243b55); position: relative; background-size: cover; background-position: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .card-icon { position: absolute; bottom: -30px; left: 30px; width: 70px; height: 70px; background-color: #1a1e24; border-radius: 16px; display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-align: center; -webkit-align-items: center; align-items: center; -webkit-box-pack: center; -webkit-justify-content: center; justify-content: center; padding: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 1px solid #2d3748; }
+        .card-icon { position: absolute; bottom: -30px; left: 30px; width: 70px; height: 70px; background-color: #1a1e24; border-radius: 16px; display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-align: center; -webkit-align-items: center; align-items: center; -webkit-box-pack: center; -webkit-justify-content: center; justify-content: center; padding: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 1px solid #2d3748; z-index: 1; }
         .card-icon-img { width: 100%; height: auto; max-height: 50px; object-fit: contain; }
         
         .card-content { padding: 45px 30px 30px 30px; display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; flex-direction: column; -webkit-box-flex: 1; -webkit-flex: 1; flex: 1; }
@@ -204,6 +209,7 @@
                 </div>
                 
                 <div class="modal-right">
+                    <div id="modalSliderContainer" class="ken-burns-container" style="display:none;"></div>
                     <img id="modalHeroImage" class="modal-hero-image" src="" alt="App Logo">
                 </div>
             </div>
@@ -267,7 +273,9 @@
                 detailedCopy: '',
                 features: ['Client-side PDF merging', 'Header and footer customization', 'Automated page numbering', 'Zero server data transfer'],
                 market: 'Students, accountants, and administrative professionals.',
-                url: 'https://its-my-merge.web.app/'
+                url: 'https://its-my-merge.web.app/',
+                heroImages: ['images/Screenshot 2025-10-05 123332.png', 'images/Screenshot 2025-10-05 123554.png', 'images/Screenshot 2025-10-05 123716.png'],
+                screenshots: ['images/Screenshot 2025-10-05 123332.png', 'images/Screenshot 2025-10-05 123554.png', 'images/Screenshot 2025-10-05 123716.png']
             },
             {
                 id: 'itsmyidea', category: 'app',
@@ -490,6 +498,19 @@
             var hero = document.createElement('div');
             hero.className = 'card-hero';
 
+            if (app.heroImages && app.heroImages.length > 0) {
+                var kbContainer = document.createElement('div');
+                kbContainer.className = 'ken-burns-container';
+                for (var k = 0; k < app.heroImages.length; k++) {
+                    var slide = document.createElement('div');
+                    slide.className = 'ken-burns-slide';
+                    slide.style.backgroundImage = 'url("' + app.heroImages[k] + '")';
+                    slide.style.animationDelay = (k * 5) + 's';
+                    kbContainer.appendChild(slide);
+                }
+                hero.appendChild(kbContainer);
+            }
+
             var icon = document.createElement('div');
             icon.className = 'card-icon';
             if (app.icon.indexOf('images/') === 0) {
@@ -564,10 +585,25 @@
             }
 
             var modalImage = document.getElementById('modalHeroImage');
-            if (data.icon.indexOf('images/') === 0) {
+            var modalSlider = document.getElementById('modalSliderContainer');
+
+            if (data.screenshots && data.screenshots.length > 0) {
+                modalImage.style.display = 'none';
+                modalSlider.innerHTML = '';
+                for (var s = 0; s < data.screenshots.length; s++) {
+                    var slide = document.createElement('div');
+                    slide.className = 'ken-burns-slide';
+                    slide.style.backgroundImage = 'url("' + data.screenshots[s] + '")';
+                    slide.style.animationDelay = (s * 5) + 's';
+                    modalSlider.appendChild(slide);
+                }
+                modalSlider.style.display = 'block';
+            } else if (data.icon.indexOf('images/') === 0) {
+                modalSlider.style.display = 'none';
                 modalImage.src = data.icon;
                 modalImage.style.display = 'block';
             } else {
+                modalSlider.style.display = 'none';
                 modalImage.style.display = 'none';
             }
 
