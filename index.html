@@ -19,8 +19,10 @@
 
         /* Home View Dashboard */
         .dashboard { display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; flex-direction: column; min-height: 100vh; padding: 40px; }
-        .header { text-align: center; margin-bottom: 50px; }
-        .header h1 { font-size: 32px; font-weight: 700; letter-spacing: 1px; color: #ffffff; background: -webkit-linear-gradient(45deg, #00e5ff, #00ff88); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header { text-align: center; margin-bottom: 50px; display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; flex-direction: column; -webkit-box-align: center; -webkit-align-items: center; align-items: center; }
+        .header-logo { width: 120px; height: auto; margin-bottom: 20px; }
+        .header h1 { font-size: 42px; font-weight: 700; letter-spacing: -0.5px; color: #ffffff; margin-bottom: 15px; }
+        .header p { font-size: 18px; color: #7a8d9e; max-width: 600px; margin: 0 auto; line-height: 1.5; }
 
         .card-grid { display: -webkit-box; display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-pack: center; -webkit-justify-content: center; justify-content: center; gap: 30px; width: 100%; max-width: 1200px; margin: 0 auto; }
 
@@ -88,7 +90,9 @@
 
     <div class="dashboard">
         <header class="header">
-            <h1>ItsMyApp Fleet</h1>
+            <img src="images/itsmyapp_logo.png" alt="ItsMyApp Logo" class="header-logo">
+            <h1>Innovative Apps, Simplified.</h1>
+            <p>Discover a collection of user-friendly apps designed to solve real-world problems and make your life easier.</p>
         </header>
 
         <div class="card-grid" id="appCardsContainer">
