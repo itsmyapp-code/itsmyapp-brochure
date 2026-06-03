@@ -33,6 +33,7 @@ export function ApplicationSpotlight({ id, title, description, apps }: Applicati
             <PremiumCard 
               key={index}
               title={app.title}
+              slug={app.slug}
               description={app.description}
               image={app.image}
               link={app.link}

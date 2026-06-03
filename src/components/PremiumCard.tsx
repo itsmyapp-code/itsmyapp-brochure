@@ -8,6 +8,7 @@ interface AppFeature {
 
 export interface PremiumCardProps {
   title: string;
+  slug: string;
   description: string;
   image?: string;
   link?: string;
@@ -20,6 +21,7 @@ export interface PremiumCardProps {
 
 export default function PremiumCard({
   title,
+  slug,
   description,
   image,
   link,
@@ -34,8 +36,8 @@ export default function PremiumCard({
   const textGlowClass = isCyan ? "text-neon-cyan" : "text-neon-green";
   const textTitleGlowClass = isCyan ? "group-hover:text-glow-cyan" : "group-hover:text-glow-green";
 
-  const CardWrapper = link ? "a" : "div";
-  const wrapperProps = link ? { href: link, target: "_blank", rel: "noopener noreferrer" } : {};
+  const CardWrapper = slug ? "a" : "div";
+  const wrapperProps = slug ? { href: `/apps/${slug}` } : {};
 
   return (
     <CardWrapper {...wrapperProps} className={`group flex flex-col bg-cyber-panel border border-cyber-border transition-all duration-500 overflow-hidden relative cursor-pointer ${glowClass}`}>
