@@ -197,13 +197,6 @@ export const fullStackApps: AppData[] = [
 
 export const websites: AppData[] = [
   {
-    title: "CoastAI",
-    slug: "coast-ai",
-    description: "AI Solutions for Small Business. Custom AI agents to handle daily operations.",
-    link: "https://coastalai.co.uk/",
-    image: "/images/itsmyapp_logo.png"
-  },
-  {
     title: "The Residence",
     slug: "the-residence",
     description: "A stunningly refurbished property redefining shared living with private accommodation and a vibrant community.",
@@ -226,13 +219,6 @@ export const websiteAdditions: AppData[] = [
     description: "Seamless scheduling integration—perfect for service-based businesses and consultants.",
     link: "https://itsmyapp.co.uk/calendly-demo",
     image: "/images/calendly_demo.png"
-  },
-  {
-    title: "Digital Brochure",
-    slug: "digital-brochure",
-    description: "Interactive digital brochure featuring a Ken Burns hero slideshow and animated feature cards.",
-    link: "https://itsmyapp.co.uk/packit-trackit-brochure",
-    image: "/images/Screenshot 2026-05-31 105400.png"
   },
   {
     title: "Animated Logo",

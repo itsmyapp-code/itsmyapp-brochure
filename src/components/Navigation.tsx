@@ -23,7 +23,7 @@ export function Navigation() {
       {/* Hamburger Button */}
       <button 
         onClick={toggleMenu}
-        className="fixed top-8 right-8 z-50 p-3 bg-cyber-black/80 backdrop-blur-md border border-white/10 rounded-full hover:border-neon-cyan/50 transition-colors duration-300 group"
+        className="fixed top-8 left-8 z-50 p-3 bg-cyber-black/80 backdrop-blur-md border border-white/10 rounded-full hover:border-neon-cyan/50 transition-colors duration-300 group"
         aria-label="Toggle menu"
       >
         <div className="w-6 h-5 relative flex flex-col justify-between">
@@ -40,7 +40,6 @@ export function Navigation() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
         
         <nav className="flex flex-col items-center justify-center h-full space-y-8">
-          <h3 className="text-neon-cyan font-mono text-sm tracking-[0.2em] mb-4">HAMBURGER MENU</h3>
           
           {navLinks.map((link) => (
             <Link 

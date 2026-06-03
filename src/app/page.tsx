@@ -1,5 +1,6 @@
 import HeroSection from "@/components/HeroSection";
-import ComplianceMatrix from "@/components/ComplianceMatrix";
+import Philosophy from "@/components/Philosophy";
+import ZeroServerInfo from "@/components/ZeroServerInfo";
 import { ApplicationSpotlight } from "@/components/ApplicationSpotlight";
 import FutureHorizons from "@/components/FutureHorizons";
 import EngineRoom from "@/components/EngineRoom";
@@ -10,9 +11,9 @@ export default function Home() {
     <main className="flex flex-col w-full min-h-screen bg-cyber-black overflow-x-hidden">
       <HeroSection />
       
-      <div id="philosophy">
-        <ComplianceMatrix />
-      </div>
+      <Philosophy />
+
+      <ZeroServerInfo />
 
       <ApplicationSpotlight 
         id="zero-server" 
