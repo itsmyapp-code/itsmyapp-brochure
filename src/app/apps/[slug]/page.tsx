@@ -5,9 +5,11 @@ import { allApps } from '@/data/portfolio';
 import KenBurnsHero from '@/components/KenBurnsHero';
 
 export function generateStaticParams() {
-  return allApps.map((app) => ({
-    slug: app.slug,
-  }));
+  return allApps
+    .filter((app) => app.slug)
+    .map((app) => ({
+      slug: app.slug as string,
+    }));
 }
 
 export default async function AppDetailPage({ params }: { params: Promise<{ slug: string }> }) {
