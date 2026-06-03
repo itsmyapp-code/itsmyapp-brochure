@@ -5,7 +5,13 @@ import Image from "next/image";
 
 export default function HeroSection() {
   const [mounted, setMounted] = useState(false);
-  const bgImages = ['/images/hero_bg_2.png', '/images/hero_bg_1.png'];
+  // The CSS keyframes are mathematically designed for exactly 4 images to create a seamless crossfade loop.
+  const bgImages = [
+    '/images/hero_bg_2.png', 
+    '/images/hero_bg_1.png', 
+    '/images/hero_bg_2.png', 
+    '/images/hero_bg_1.png'
+  ];
 
   useEffect(() => {
     setMounted(true);
