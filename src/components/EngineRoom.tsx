@@ -56,104 +56,65 @@ export default function EngineRoom() {
   }, []);
 
   return (
-    <footer id="contact" className="py-24 px-6 md:px-12 bg-cyber-black relative border-t border-cyber-border overflow-hidden">
-      {/* Decorative top glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-neon-cyan shadow-[0_0_30px_5px_rgba(0,229,255,0.8)]" />
-
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tight text-text-primary text-glow-cyan mb-4">
-            Contact & Connect
-          </h2>
-          <p className="text-lg text-gray-400 font-mono">
-            Reach out to our team or join our secure newsletter.
+    <footer id="contact" className="bg-[#0A192F] relative overflow-hidden font-sans">
+      
+      {/* Newsletter Section exactly like old site */}
+      <section className="bg-[#495670]/10 text-white border-y border-[#495670]/20">
+        <div className="container mx-auto px-4 py-20 text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">Stay Ahead of the Curve</h2>
+          <p className="text-lg text-[#8892B0] mb-8 max-w-xl mx-auto">
+            Join our newsletter to get the latest news, updates, and early access to our apps in development.
           </p>
-        </div>
 
-        <div className="grid md:grid-cols-2 gap-12 mb-16">
-          {/* Contact Form */}
-          <div className="bg-cyber-panel border border-cyber-border p-8 rounded-xl shadow-lg relative overflow-hidden group hover:border-neon-cyan transition-colors duration-500">
-            <h3 className="text-2xl font-bold text-white mb-6 font-inter uppercase">Get In Touch</h3>
-            
-            {isSubmitted ? (
-              <div className="h-full flex flex-col items-center justify-center text-center py-12">
-                <span className="text-neon-cyan text-5xl mb-4 block">✓</span>
-                <h4 className="text-2xl font-bold text-white mb-2">Message Sent</h4>
-                <p className="text-gray-400 font-mono">We will securely process your inquiry and respond shortly.</p>
-              </div>
-            ) : (
-              <form className="space-y-6" onSubmit={handleContactSubmit}>
-                <div>
-                  <label className="block text-xs font-mono text-neon-cyan mb-2 uppercase tracking-widest">Name</label>
-                  <input 
-                    type="text" 
-                    name="name"
-                    value={formInput.name}
-                    onChange={handleInputChange}
-                    className="w-full bg-cyber-dark border border-cyber-border p-3 text-white focus:outline-none focus:border-neon-cyan transition-colors font-sans"
-                    placeholder="John Doe"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-mono text-neon-cyan mb-2 uppercase tracking-widest">Email</label>
-                  <input 
-                    type="email" 
-                    name="email"
-                    value={formInput.email}
-                    onChange={handleInputChange}
-                    className="w-full bg-cyber-dark border border-cyber-border p-3 text-white focus:outline-none focus:border-neon-cyan transition-colors font-sans"
-                    placeholder="john@example.com"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-mono text-neon-cyan mb-2 uppercase tracking-widest">Message</label>
-                  <textarea 
-                    name="message"
-                    value={formInput.message}
-                    onChange={handleInputChange}
-                    className="w-full bg-cyber-dark border border-cyber-border p-3 text-white focus:outline-none focus:border-neon-cyan transition-colors font-sans h-32 resize-none"
-                    placeholder="How can we help?"
-                    required
-                  ></textarea>
-                </div>
-                
-                {/* Honeypot field for spam protection */}
-                <input type="text" name="_gotcha" style={{ display: 'none' }} />
-                
-                {error && <p className="text-red-500 text-sm font-mono">{error}</p>}
-                
-                <button 
-                  type="submit" 
-                  className="w-full bg-transparent border border-neon-cyan text-neon-cyan hover:bg-neon-cyan hover:text-cyber-black font-bold uppercase tracking-widest py-4 transition-colors duration-300"
-                >
-                  Send Transmission
-                </button>
-              </form>
-            )}
-          </div>
-
-          {/* Newsletter Form */}
-          <div className="bg-cyber-panel border border-cyber-border p-8 rounded-xl shadow-lg relative overflow-hidden group hover:border-neon-green transition-colors duration-500">
-            <h3 className="text-2xl font-bold text-white mb-6 font-inter uppercase">The Newsletter</h3>
-            <p className="text-gray-400 text-sm mb-8 leading-relaxed font-sans">
-              No spam. No trackers. Just high-quality updates on new Zero Server apps, technical deep dives, and digital sovereignty insights, delivered straight to your inbox.
-            </p>
-            
+          <div className="max-w-md mx-auto bg-[#495670]/5 rounded-xl p-4 md:p-8 backdrop-blur-sm border border-white/5 shadow-2xl">
             {/* MailerLite Embedded Form */}
             <div className="ml-embedded" data-form="buJ2S3"></div>
-            
-            <div className="mt-8 p-4 bg-cyber-dark border border-cyber-border rounded-lg text-center">
-               <span className="text-neon-green text-xl block mb-2">🛡️</span>
-               <span className="text-xs text-gray-500 font-mono uppercase">Your data is strictly encrypted</span>
-            </div>
           </div>
-        </div>
 
-        <div className="mt-16 pt-8 border-t border-cyber-border/50 text-xs text-text-muted font-mono uppercase tracking-widest text-center">
-          © {new Date().getFullYear()} itsmyapp.co.uk | Built for Performance & Privacy.
+          <p className="text-xs text-[#495670] mt-6 italic">We respect your privacy. Unsubscribe at any time.</p>
         </div>
+      </section>
+
+      {/* Contact Form Section exactly like old site */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 max-w-xl text-center">
+          <h2 className="text-3xl font-bold mb-4 text-white">Get in Touch</h2>
+          <p className="text-lg text-[#8892B0] mb-8">Have questions, feedback, or a project in mind? We'd love to hear from you.</p>
+          
+          {isSubmitted ? (
+            <div className="p-8 bg-[#495670]/10 rounded-lg shadow-lg text-center">
+                <h3 className="text-2xl font-semibold text-[#64FFDA]">Thank You!</h3>
+                <p className="text-[#8892B0] mt-2">Your message has been sent. We'll get back to you soon.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleContactSubmit} className="p-8 bg-[#495670]/10 rounded-xl shadow-lg space-y-4">
+              <div>
+                  <label htmlFor="name" className="block text-[#8892B0] text-sm font-bold mb-2 text-left">Name</label>
+                  <input type="text" id="name" name="name" value={formInput.name} onChange={handleInputChange} className="shadow-sm appearance-none bg-[#495670]/20 border border-[#495670] rounded-lg w-full py-2 px-3 text-white leading-tight focus:outline-none focus:ring-2 focus:ring-[#64FFDA]" required />
+              </div>
+              <div>
+                  <label htmlFor="email" className="block text-[#8892B0] text-sm font-bold mb-2 text-left">Email</label>
+                  <input type="email" id="email" name="email" value={formInput.email} onChange={handleInputChange} className="shadow-sm appearance-none bg-[#495670]/20 border border-[#495670] rounded-lg w-full py-2 px-3 text-white leading-tight focus:outline-none focus:ring-2 focus:ring-[#64FFDA]" required />
+              </div>
+              <div>
+                  <label htmlFor="message" className="block text-[#8892B0] text-sm font-bold mb-2 text-left">Message</label>
+                  <textarea id="message" name="message" value={formInput.message} onChange={handleInputChange} rows={4} className="shadow-sm appearance-none bg-[#495670]/20 border border-[#495670] rounded-lg w-full py-2 px-3 text-white leading-tight focus:outline-none focus:ring-2 focus:ring-[#64FFDA]" required></textarea>
+              </div>
+              {/* Honeypot field for spam protection */}
+              <input type="text" name="_gotcha" style={{ display: 'none' }} />
+              <div className="text-center">
+                  <button type="submit" className="w-full bg-[#64FFDA] text-[#0A192F] font-bold py-3 px-6 rounded-lg hover:bg-opacity-80 transition-colors duration-300">
+                      Send Message
+                  </button>
+              </div>
+              {error && <p className="text-red-500 text-center mt-4">{error}</p>}
+            </form>
+          )}
+        </div>
+      </section>
+
+      <div className="py-8 border-t border-[#495670]/20 text-xs text-[#8892B0] text-center">
+        © {new Date().getFullYear()} itsmyapp.co.uk
       </div>
     </footer>
   );
