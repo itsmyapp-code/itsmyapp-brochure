@@ -2,6 +2,7 @@ import HeroSection from "@/components/HeroSection";
 import Philosophy from "@/components/Philosophy";
 import ZeroServerInfo from "@/components/ZeroServerInfo";
 import { ApplicationSpotlight } from "@/components/ApplicationSpotlight";
+import ComplianceMD from "@/components/ComplianceMD";
 import EngineRoom from "@/components/EngineRoom";
 import { zeroServerApps, fullStackApps, websites, websiteAdditions } from "@/data/portfolio";
 
@@ -13,6 +14,8 @@ export default function Home() {
       <Philosophy />
 
       <ZeroServerInfo />
+
+      <ComplianceMD />
 
       <ApplicationSpotlight 
         id="zero-server" 
