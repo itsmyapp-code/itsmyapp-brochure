@@ -28,7 +28,44 @@ export const zeroServerApps: AppData[] = [
       "/images/its_my_merge.png",
       "/images/its_my_merge.png"
     ],
-    extendedDescription: "Its My Merge is the ultimate zero-server PDF manipulation tool. It runs entirely in your browser using local compute resources. You can merge documents, reorder pages, and apply custom headers or footers without your sensitive documents ever touching a remote server. Total privacy by design."
+    extendedDescription: `
+      <p class="mb-6">There are several practical reasons why merging PDFs makes life easier, whether you are managing business documents, handling personal admin, or developing digital tools. At its core, merging PDFs is about organization, presentation, and efficiency. Here is why you would want to do it:</p>
+      
+      <h3 class="text-xl font-bold text-white mt-8 mb-4">1. Professional Presentation & Client Delivery</h3>
+      <p class="mb-4">When sending documents to clients, investors, or stakeholders, delivering a single, cohesive file looks much more professional than forcing them to download a dozen separate attachments.</p>
+      <ul class="list-disc pl-6 mb-6 space-y-2 text-gray-400">
+        <li><strong class="text-white">Business Proposals:</strong> Combining a cover letter, a cost breakdown, technical specifications, and terms of service into one continuous document.</li>
+        <li><strong class="text-white">Portfolios:</strong> Merging separate design samples, case studies, and a CV into a single showcase file.</li>
+      </ul>
+
+      <h3 class="text-xl font-bold text-white mt-8 mb-4">2. Streamlining Admin & Bookkeeping</h3>
+      <p class="mb-4">Managing paperwork becomes significantly easier when related items are housed together.</p>
+      <ul class="list-disc pl-6 mb-6 space-y-2 text-gray-400">
+        <li><strong class="text-white">Expense Reporting:</strong> Merging individual digital receipts, invoices, and bank statements into a single PDF for an accountant or tax submission.</li>
+        <li><strong class="text-white">Archiving Projects:</strong> Combining all contracts, design iterations, and sign-off sheets for a completed project into one master archive file.</li>
+      </ul>
+
+      <h3 class="text-xl font-bold text-white mt-8 mb-4">3. Seamless Printing and Sharing</h3>
+      <p class="mb-4">Dealing with multiple files can lead to errors and unnecessary friction when printing or distributing materials.</p>
+      <ul class="list-disc pl-6 mb-6 space-y-2 text-gray-400">
+        <li><strong class="text-white">Batch Printing:</strong> Sending one 50-page document to a printer is far more reliable than sending 10 separate 5-page documents, which can easily get mixed up in the printer queue or print in the wrong order.</li>
+        <li><strong class="text-white">Avoiding Email Limits:</strong> Email servers often restrict the number of attachments or total file size. Merging documents (and compressing them) ensures everything arrives in one go.</li>
+      </ul>
+
+      <h3 class="text-xl font-bold text-white mt-8 mb-4">4. Better User Experience (UX)</h3>
+      <p class="mb-4">From a digital perspective, scrolling through a single, well-structured document is a much better user experience than opening and closing multiple tabs.</p>
+      <ul class="list-disc pl-6 mb-6 space-y-2 text-gray-400">
+        <li><strong class="text-white">E-Books & Manuals:</strong> Combining individual chapters or standard compliance sections (like Privacy Policies, Terms of Service, and Cookie Policies) into a single downloadable user guide.</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold text-neon-cyan mt-12 mb-4">The Developer's Perspective: Smart Merging</h3>
+      <p class="mb-4">If you are looking at this from a development or automation angle, merging isn't just about sticking files together end-to-end. Modern "Zero-Server" web tools allow users to handle this entirely in the browser to maintain absolute data privacy, while offering advanced features like:</p>
+      <ul class="list-disc pl-6 mb-6 space-y-2 text-gray-400">
+        <li><strong class="text-white">Selective Merging:</strong> Extracting only specific pages from Document A and combining them with Document B.</li>
+        <li><strong class="text-white">Reordering:</strong> Dragging and dropping pages visually before finalizing the compilation.</li>
+      </ul>
+      <p class="mt-8 text-lg font-mono text-neon-cyan border-l-2 border-neon-cyan pl-4">Whether you're organizing personal files or building a streamlined utility tool, merging PDFs is all about cutting out digital clutter and making information easier to digest.</p>
+    `
   },
   {
     title: "Its My Idea",

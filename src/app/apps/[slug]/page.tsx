@@ -43,7 +43,7 @@ export default async function AppDetailPage({ params }: { params: Promise<{ slug
           <div className="prose prose-invert prose-p:text-gray-400 prose-p:leading-relaxed max-w-none">
             <p className="text-xl text-neon-cyan mb-8 font-mono">{app.description}</p>
             {app.extendedDescription && (
-              <p>{app.extendedDescription}</p>
+              <div dangerouslySetInnerHTML={{ __html: app.extendedDescription }} />
             )}
           </div>
 
