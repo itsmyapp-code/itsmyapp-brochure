@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
 import "./globals.css";
+import { Navigation } from "@/components/Navigation";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -13,8 +14,8 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ItsMyApp | Next-Gen Digital Brochure",
-  description: "Innovative Apps, Simplified. A collection of high-performance zero-server utilities and web applications.",
+  title: "ItsMyApp - Next-Gen Digital Brochure",
+  description: "High-performance software suite and zero-server paradigm applications.",
 };
 
 export default function RootLayout({
@@ -23,11 +24,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${robotoMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col bg-cyber-black text-text-primary selection:bg-neon-cyan selection:text-cyber-black">
+    <html lang="en" className="scroll-smooth">
+      <body
+        className={`${inter.variable} ${robotoMono.variable} antialiased bg-cyber-black text-white min-h-screen selection:bg-neon-cyan selection:text-cyber-black`}
+      >
+        <Navigation />
         {children}
       </body>
     </html>
