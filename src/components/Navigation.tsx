@@ -15,7 +15,7 @@ export function Navigation() {
     { name: 'Websites', href: '#websites' },
     { name: 'Website Additions', href: '#additions' },
     { name: 'About', href: '#about' },
-    { name: 'Contact (Including Newsletter Sign Up)', href: '#contact' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   return (
