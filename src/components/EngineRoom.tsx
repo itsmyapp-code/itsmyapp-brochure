@@ -1,8 +1,60 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function EngineRoom() {
+  const [formInput, setFormInput] = useState({ name: '', email: '', message: '' });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormInput(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    
+    // Formspree ID from the old site
+    const formspreeId = 'mojnoejw';
+
+    try {
+      const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
+        method: 'POST',
+        body: JSON.stringify(formInput),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormInput({ name: '', email: '', message: '' });
+      } else {
+        setError(data.error || "Oops! There was a problem submitting your form.");
+      }
+    } catch (err) {
+      console.error('Error:', err);
+      setError("Oops! There was a network problem. Please try again later.");
+    }
+  };
+
+  // MailerLite Initialization
+  useEffect(() => {
+    const init = () => {
+      if (typeof window !== 'undefined' && (window as any).ml) {
+        (window as any).ml('account', '2088496');
+      }
+    };
+    init();
+    const timer = setTimeout(init, 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <footer id="contact" className="py-24 px-6 md:px-12 bg-cyber-black relative border-t border-cyber-border overflow-hidden">
       {/* Decorative top glow */}
@@ -22,37 +74,64 @@ export default function EngineRoom() {
           {/* Contact Form */}
           <div className="bg-cyber-panel border border-cyber-border p-8 rounded-xl shadow-lg relative overflow-hidden group hover:border-neon-cyan transition-colors duration-500">
             <h3 className="text-2xl font-bold text-white mb-6 font-inter uppercase">Get In Touch</h3>
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <div>
-                <label className="block text-xs font-mono text-neon-cyan mb-2 uppercase tracking-widest">Name</label>
-                <input 
-                  type="text" 
-                  className="w-full bg-cyber-dark border border-cyber-border p-3 text-white focus:outline-none focus:border-neon-cyan transition-colors font-sans"
-                  placeholder="John Doe"
-                />
+            
+            {isSubmitted ? (
+              <div className="h-full flex flex-col items-center justify-center text-center py-12">
+                <span className="text-neon-cyan text-5xl mb-4 block">✓</span>
+                <h4 className="text-2xl font-bold text-white mb-2">Message Sent</h4>
+                <p className="text-gray-400 font-mono">We will securely process your inquiry and respond shortly.</p>
               </div>
-              <div>
-                <label className="block text-xs font-mono text-neon-cyan mb-2 uppercase tracking-widest">Email</label>
-                <input 
-                  type="email" 
-                  className="w-full bg-cyber-dark border border-cyber-border p-3 text-white focus:outline-none focus:border-neon-cyan transition-colors font-sans"
-                  placeholder="john@example.com"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-mono text-neon-cyan mb-2 uppercase tracking-widest">Message</label>
-                <textarea 
-                  className="w-full bg-cyber-dark border border-cyber-border p-3 text-white focus:outline-none focus:border-neon-cyan transition-colors font-sans h-32 resize-none"
-                  placeholder="How can we help?"
-                ></textarea>
-              </div>
-              <button 
-                type="button" 
-                className="w-full bg-transparent border border-neon-cyan text-neon-cyan hover:bg-neon-cyan hover:text-cyber-black font-bold uppercase tracking-widest py-4 transition-colors duration-300"
-              >
-                Send Transmission
-              </button>
-            </form>
+            ) : (
+              <form className="space-y-6" onSubmit={handleContactSubmit}>
+                <div>
+                  <label className="block text-xs font-mono text-neon-cyan mb-2 uppercase tracking-widest">Name</label>
+                  <input 
+                    type="text" 
+                    name="name"
+                    value={formInput.name}
+                    onChange={handleInputChange}
+                    className="w-full bg-cyber-dark border border-cyber-border p-3 text-white focus:outline-none focus:border-neon-cyan transition-colors font-sans"
+                    placeholder="John Doe"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-mono text-neon-cyan mb-2 uppercase tracking-widest">Email</label>
+                  <input 
+                    type="email" 
+                    name="email"
+                    value={formInput.email}
+                    onChange={handleInputChange}
+                    className="w-full bg-cyber-dark border border-cyber-border p-3 text-white focus:outline-none focus:border-neon-cyan transition-colors font-sans"
+                    placeholder="john@example.com"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-mono text-neon-cyan mb-2 uppercase tracking-widest">Message</label>
+                  <textarea 
+                    name="message"
+                    value={formInput.message}
+                    onChange={handleInputChange}
+                    className="w-full bg-cyber-dark border border-cyber-border p-3 text-white focus:outline-none focus:border-neon-cyan transition-colors font-sans h-32 resize-none"
+                    placeholder="How can we help?"
+                    required
+                  ></textarea>
+                </div>
+                
+                {/* Honeypot field for spam protection */}
+                <input type="text" name="_gotcha" style={{ display: 'none' }} />
+                
+                {error && <p className="text-red-500 text-sm font-mono">{error}</p>}
+                
+                <button 
+                  type="submit" 
+                  className="w-full bg-transparent border border-neon-cyan text-neon-cyan hover:bg-neon-cyan hover:text-cyber-black font-bold uppercase tracking-widest py-4 transition-colors duration-300"
+                >
+                  Send Transmission
+                </button>
+              </form>
+            )}
           </div>
 
           {/* Newsletter Form */}
@@ -61,22 +140,9 @@ export default function EngineRoom() {
             <p className="text-gray-400 text-sm mb-8 leading-relaxed font-sans">
               No spam. No trackers. Just high-quality updates on new Zero Server apps, technical deep dives, and digital sovereignty insights, delivered straight to your inbox.
             </p>
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <div>
-                <label className="block text-xs font-mono text-neon-green mb-2 uppercase tracking-widest">Email Address</label>
-                <input 
-                  type="email" 
-                  className="w-full bg-cyber-dark border border-cyber-border p-3 text-white focus:outline-none focus:border-neon-green transition-colors font-sans"
-                  placeholder="Enter your email"
-                />
-              </div>
-              <button 
-                type="button" 
-                className="w-full bg-transparent border border-neon-green text-neon-green hover:bg-neon-green hover:text-cyber-black font-bold uppercase tracking-widest py-4 transition-colors duration-300"
-              >
-                Secure Subscribe
-              </button>
-            </form>
+            
+            {/* MailerLite Embedded Form */}
+            <div className="ml-embedded" data-form="buJ2S3"></div>
             
             <div className="mt-8 p-4 bg-cyber-dark border border-cyber-border rounded-lg text-center">
                <span className="text-neon-green text-xl block mb-2">🛡️</span>
