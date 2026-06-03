@@ -8,9 +8,10 @@ interface AppFeature {
 
 export interface PremiumCardProps {
   title: string;
-  slug: string;
+  slug?: string;
   description: string;
   image?: string;
+  video?: string;
   link?: string;
   badge?: string;
   number?: string;
@@ -24,6 +25,7 @@ export default function PremiumCard({
   slug,
   description,
   image,
+  video,
   link,
   badge,
   number,
@@ -36,15 +38,24 @@ export default function PremiumCard({
   const textGlowClass = isCyan ? "text-neon-cyan" : "text-neon-green";
   const textTitleGlowClass = isCyan ? "group-hover:text-glow-cyan" : "group-hover:text-glow-green";
 
-  const CardWrapper = slug ? "a" : "div";
-  const wrapperProps = slug ? { href: `/apps/${slug}` } : {};
+  const CardWrapper = slug ? "a" : (link ? "a" : "div");
+  const wrapperProps = slug ? { href: `/apps/${slug}` } : (link ? { href: link, target: "_blank", rel: "noopener noreferrer" } : {});
 
   return (
-    <CardWrapper {...wrapperProps} className={`group flex flex-col bg-cyber-panel border border-cyber-border transition-all duration-500 overflow-hidden relative cursor-pointer ${glowClass}`}>
+    <CardWrapper {...wrapperProps} className={`group flex flex-col bg-cyber-panel border border-cyber-border transition-all duration-500 overflow-hidden relative ${slug || link ? 'cursor-pointer' : ''} ${glowClass}`}>
       
       {/* Top Banner Area */}
       <div className="relative h-48 w-full border-b border-cyber-border overflow-hidden bg-cyber-dark flex items-center justify-center">
-        {image ? (
+        {video ? (
+          <video 
+            src={video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+          />
+        ) : image ? (
           <Image 
             src={image} 
             alt={title} 

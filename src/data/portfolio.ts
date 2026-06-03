@@ -1,9 +1,10 @@
 export interface AppData {
   title: string;
-  slug: string;
+  slug?: string;
   description: string;
-  link: string;
-  image: string;
+  link?: string;
+  image?: string;
+  video?: string;
   badge?: string;
   heroImages?: string[];
   screenshots?: string[];
@@ -222,10 +223,8 @@ export const websiteAdditions: AppData[] = [
   },
   {
     title: "Animated Logo",
-    slug: "animated-logo",
     description: "A stunning branded animated logo combining looping video, pulsing glow, and branded audio.",
-    link: "https://itsmyapp.co.uk/packit-trackit-logo",
-    image: "/images/Packit_Trackit.png"
+    video: "/videos/PackitTrackit_Logo.mp4"
   },
   {
     title: "ItsMyApp Voice",

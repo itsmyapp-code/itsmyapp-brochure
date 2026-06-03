@@ -38,7 +38,9 @@ export default function ZeroServerInfo() {
             Zero Server apps are expensive to build but cost us nothing to run. If you find value in these tools, consider fueling our mission with a small donation.
           </p>
           <a 
-            href="#" 
+            href="https://buy.stripe.com/fZucN589J6kNfWS8CzgYU03" 
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block px-8 py-3 bg-neon-cyan text-cyber-black font-bold rounded-full hover:bg-white transition-colors duration-300"
           >
             Support the Developers

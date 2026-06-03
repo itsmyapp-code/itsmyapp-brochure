@@ -21,11 +21,11 @@ export default async function AppDetailPage({ params }: { params: Promise<{ slug
   // Fallback to default image if heroImages array is missing
   const heroImages = app.heroImages && app.heroImages.length > 0 
     ? app.heroImages 
-    : [app.image, app.image, app.image];
+    : ([app.image, app.image, app.image].filter(Boolean) as string[]);
 
   return (
     <main className="flex flex-col w-full min-h-screen bg-cyber-black overflow-x-hidden pt-20">
-      <Link href="/#zero-server" className="fixed top-8 left-8 z-50 text-neon-cyan font-mono hover:text-white transition-colors flex items-center gap-2">
+      <Link href="/#zero-server" className="fixed top-8 left-24 z-50 text-neon-cyan font-mono hover:text-white transition-colors flex items-center gap-2">
         <span>←</span> BACK TO PORTFOLIO
       </Link>
 
