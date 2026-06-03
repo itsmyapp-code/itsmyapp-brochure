@@ -224,7 +224,8 @@ export const websiteAdditions: AppData[] = [
   {
     title: "Animated Logo",
     description: "A stunning branded animated logo combining looping video, pulsing glow, and branded audio.",
-    video: "/videos/PackitTrackit_Logo.mp4"
+    video: "/videos/PackitTrackit_Logo.mp4",
+    link: "https://www.itsmyapp.co.uk/packit-trackit-logo"
   },
   {
     title: "ItsMyApp Voice",
