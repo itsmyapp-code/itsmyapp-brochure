@@ -42,7 +42,11 @@ export default function HeroSection() {
               alt={`Background ${index + 1}`}
               fill
               priority={index === 0}
-              className="object-cover opacity-40"
+              className={`object-cover opacity-40 ${
+                img.includes('hero_bg_2') 
+                  ? 'object-[center_bottom] scale-150 origin-bottom' 
+                  : ''
+              }`}
             />
           </div>
         );
