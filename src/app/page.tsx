@@ -2,7 +2,6 @@ import HeroSection from "@/components/HeroSection";
 import Philosophy from "@/components/Philosophy";
 import ZeroServerInfo from "@/components/ZeroServerInfo";
 import { ApplicationSpotlight } from "@/components/ApplicationSpotlight";
-import FutureHorizons from "@/components/FutureHorizons";
 import EngineRoom from "@/components/EngineRoom";
 import { zeroServerApps, fullStackApps, websites, websiteAdditions } from "@/data/portfolio";
 
@@ -44,7 +43,6 @@ export default function Home() {
       />
 
       <div id="about">
-        <FutureHorizons />
       </div>
 
       <div id="contact">
