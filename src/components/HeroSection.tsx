@@ -57,7 +57,7 @@ export default function HeroSection() {
           The Next-Gen <br /> Digital Brochure
         </h1>
         
-        <p className="text-xl md:text-2xl text-text-secondary max-w-2xl leading-relaxed mb-12">
+        <p className="text-xl md:text-2xl text-text-secondary max-w-3xl text-balance mx-auto leading-relaxed mb-12">
           Engineered to showcase high-performance web applications using state-of-the-art frontend patterns, fluid micro-interactions, and uncompromising visual storytelling.
         </p>
         
