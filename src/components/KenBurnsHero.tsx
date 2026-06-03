@@ -19,7 +19,7 @@ export default function KenBurnsHero({ images, title }: KenBurnsHeroProps) {
   if (!images || images.length === 0) return null;
 
   return (
-    <div className="relative w-full h-[60vh] md:h-[80vh] overflow-hidden bg-cyber-black flex items-center justify-center">
+    <div className="relative w-full h-[40vh] md:h-[50vh] overflow-hidden bg-cyber-black flex items-center justify-center">
       {/* Fallback pattern while loading */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,229,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,229,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px] z-0"></div>
 
