@@ -36,6 +36,7 @@ export function ApplicationSpotlight({ id, title, description, apps }: Applicati
               slug={app.slug}
               description={app.description}
               image={app.image}
+              video={app.video}
               link={app.link}
               badge={app.badge}
             />
