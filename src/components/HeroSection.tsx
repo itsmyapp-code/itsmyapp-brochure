@@ -31,7 +31,7 @@ export default function HeroSection() {
         return (
           <div 
             key={index} 
-            className="absolute inset-0 z-0 opacity-0 animate-ken-burns pointer-events-none mix-blend-overlay"
+            className="absolute inset-0 z-0 opacity-0 animate-ken-burns pointer-events-none"
             style={{
               animationDuration: `${totalDuration}s`,
               animationDelay: `${delay}s`,
@@ -42,7 +42,7 @@ export default function HeroSection() {
               alt={`Background ${index + 1}`}
               fill
               priority={index === 0}
-              className="object-cover opacity-20"
+              className="object-cover opacity-40"
             />
           </div>
         );
